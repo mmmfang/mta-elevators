@@ -1,20 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html ng-app="elevatorApp">
 <head>
 	<meta charset="UTF-8">
-
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 	<link rel="stylesheet" href="">	
 	<title>MTA Elevator Escalator Outage App</title>
 </head>
-<body>
-	<h1>jQuery and XML</h1>
-	
-	<button id="getXML">
-		click to get XML
-	</button>
 
+<body>
+	<h1>Angularizing my Elevator Outages App</h1>
+	
+
+	<ul ng-repeat="outage in elevator.outages track by $index">
+  		<li>{{outage.station}} </li>
+	 </ul>
+
+	<div id="info-box"></div>
 
 	<script src="app.js"></script>
-</body>
+	<script src="jquery.xml2json.js"></script>
+
+	</body>
 </html>
+
