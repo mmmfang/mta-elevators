@@ -1,0 +1,30 @@
+{
+  "name": "mta-elevators",
+  "version": "1.0.0",
+  "description": "Here will be information about my app about MTA elevator/escalator outages",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmmfang/mta-elevators.git"
+  },
+  "author": "Mae Fang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mmmfang/mta-elevators/issues"
+  },
+  "homepage": "https://github.com/mmmfang/mta-elevators#readme",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "ejs": "^2.3.4",
+    "express": "^4.13.3",
+    "express-ejs-layouts": "^2.0.0",
+    "express-session": "^1.12.1",
+    "method-override": "^2.3.5",
+    "mongoose": "^4.2.7",
+    "morgan": "^1.6.1",
+    "request": "^2.67.0"
+  }
+}
