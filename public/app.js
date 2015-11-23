@@ -32,20 +32,57 @@
 ////??????????////////////ANGULAR TIME/////////////////////////////////
 ///////////////////////////////////////////////////////////////////////
 
-// var app = angular.module('elevatorApp', []);
+//var app = angular.module('elevatorApp', []);
 
 // app.controller('ElevatorController', ['$http', function($http) {
 //   var controller = this;
-//       $http.get('http://web.mta.info/developers/data/nyct/nyct_ene.xml', function(xml){
-//         var data = $.xml2json(xml);
+//   $http.get('/feed').then(function (xml){
+//       alert("GOT XML")
+//         // console.log("xml is", xml);
+//     // function process(xml) {
+//     // $(xml).find("outage").each(function(){
+//     //   alert($(this).text());
+//       // if ($(this).find("station").text()="MN") {
+//     //     alert($(this).find("station").text())
+//     // 
+//     //   }
+//     // })
+//       // }
+//   //   }  
+//    })
+// }]);
 
-//         alert(data.outage[1].station + '/' + data.outage[1].borough  + '/' + data.outage[1].borough +'/' + data.outage[1].estimatedreturntoservice);
+// app.controller('ElevatorController', ['$http', function($http){
+//   var controller=this;
+//   $this.makeAPICall = function(){
+//     var promise = $http.get('/feed');
+//     promise.success(function(data){
+//       this.info = data;
+//       console.log(data);
 //     })
-//     // var promise = $http.get('http://web.mta.info/developers/data/nyct/nyct_ene.xml');
-//     // promise.success(function(data) {
-//     //   controller.outages = data; //data is entire xml object
-// +//     //   console.log(data);
-//     // });
+//   }
+// }])
+
+   $('#get-xml').click(function(e) {
+     $.ajax({
+      type: "GET",
+      dataType: "xml",
+      url: '/feed',
+      success: function(data){
+       console.log(data);
+       var data = data;
+      }, 
+      error: function(data) {
+        console.log("my bad, try again")
+     },
+    });
+  });
+    
+    // var promise = $http.get('http://web.mta.info/developers/data/nyct/nyct_ene.xml');
+    // promise.success(function(data) {
+    //   controller.outages = data; //data is entire xml object
+     //   console.log(data);
+    // });
 
 
 // // });
@@ -122,6 +159,4 @@
 
 // insdie of server.js u make a requset to /feed ..... 
 // npm request is a npm that matt uses in OAUTH.. so the server can make the request, but the angular cannot
-
-
 // Angular going to make ajax request to own server. in that route for that url you just hit. the server is going to make anotehr req to anohter 
