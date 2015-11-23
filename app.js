@@ -101,27 +101,27 @@
 // +  });
 // +});
 
- $('#getXML').click(function(e) {
-     $.ajax({
-    type: "GET",
-    dataType: "xml",
-    url: '/feed',
+//  $('#getXML').click(function(e) {
+//      $.ajax({
+//     type: "GET",
+//     dataType: "xml",
+//     url: '/feed',
  
-    success: function(data){ //data returns everything 
+//     success: function(data){ //data returns everything 
 
-      console.log(data);
-      var data = data;
-        // $(data).find("outage").each(function(){
-       //  $("#info-box").append($(data).find("station").text() + "<br />")
-       }, error: function(data) {
-        console.log("my bad, try again");
-      }
-   });
-  });
-})
+//       console.log(data);
+//       var data = data;
+//         // $(data).find("outage").each(function(){
+//        //  $("#info-box").append($(data).find("station").text() + "<br />")
+//        }, error: function(data) {
+//         console.log("my bad, try again");
+//       }
+//    });
+//   });
+// })
 
-insdie of server.js u make a requset to /feed ..... 
-npm request is a npm that matt uses in OAUTH.. so the server can make the request, but the angular cannot
+// insdie of server.js u make a requset to /feed ..... 
+// npm request is a npm that matt uses in OAUTH.. so the server can make the request, but the angular cannot
 
 
-Angular going to make ajax request to own server. in that route for that url you just hit. the server is going to make anotehr req to anohter 
+// Angular going to make ajax request to own server. in that route for that url you just hit. the server is going to make anotehr req to anohter 
