@@ -10,23 +10,40 @@
       type: "GET",
       dataType: "xml",
       url: '/feed',
-      success: function(data){
-       //console.log(data); //whole document
-       //var data = data;
-       alert($(data).find("responsecode").text());
-       // $(data).find("outage").each(function(){
-       //  alert()
-       // })
+      success: function(xml){
+       var data = xml; //all data - complete document is returned
+       //console.log(data);
+//       var dataOne = data.data;
+  //     console.log(dataOne);
+       //alert($(data).find("responsecode").text()); //this works! yay
+        $(data).find("outage").each(function(){
+        //console.log($(xml).text()); //this works too! yay, it gives me all info per outage
+       //console.log($(this).find("station").text()); this is working, printing all stations
+      $('#info-box').append('<p>' + ($(this).find("station").text()) +'</p>');
+
+// data.message.body.track_list[i].track.track_name + " by " +  data.message.body.track_list[0].track.artist_name + '</div>')
+      //    alert($(this).find("station").text()); //yay gives all stations w outages 
+//      if ($(this).find("station").text()){
+        //$('#info-box').append('<p>' + this+ '</p>');
+      
        // var data1= data.NYCOutages;
        // console.log(data1);
-      }, 
+        })
+//      })
+     }, 
       error: function(data) {
         console.log("my bad, try again")
      },
     });
   });
 
-
+ // $('ul').html('');
+ //                if(data.Search !== undefined && data.Response !== "False"){
+ //                  data.Search.forEach(function(item){
+ //                    $('ul').append('<li>'+item.Title+'</li>');
+ //                  });
+ //                }
+ //            },
 ///////////////////////////////////////////////////////////////////////
 ////??????????////////////ANGULAR TIME/////////////////////////////////
 ///////////////////////////////////////////////////////////////////////
