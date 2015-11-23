@@ -1,31 +1,30 @@
 
 ///////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////
-//THE JQUERY AJAX CALL WORKS WITH CORS CHROME EXTENSION ENABLED ONLY
+///////////////// JQUERY AJAX CALL WORKS YAYYYYYYYYYY /////////////////
 ///////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////
 
-// $('#getXML').click(function(e) {
-//   $.ajax({
-//    type: "GET",
-//    dataType: "xml",
-//    url: "http://web.mta.info/developers/data/nyct/nyct_ene.xml",
-//    success: function(data){
-//        console.log(data);
-//        var data = data;
-//     }, error: function(data) {
-//      console.log("my bad, try again")
-//    },
-//   });
-// });
-
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////
-
-//"http://cors.io/?u=http://web.mta.info/developers/data/nyct/nyct_ene.xml" 
-// THIS EXTENSION FOR PROXY IS TEMPORARILY OVER SERVING CAPACITY
+   $('#get-xml').click(function(e) {
+     $.ajax({
+      type: "GET",
+      dataType: "xml",
+      url: '/feed',
+      success: function(data){
+       //console.log(data); //whole document
+       //var data = data;
+       alert($(data).find("responsecode").text());
+       // $(data).find("outage").each(function(){
+       //  alert()
+       // })
+       // var data1= data.NYCOutages;
+       // console.log(data1);
+      }, 
+      error: function(data) {
+        console.log("my bad, try again")
+     },
+    });
+  });
 
 
 ///////////////////////////////////////////////////////////////////////
@@ -63,20 +62,7 @@
 //   }
 // }])
 
-   $('#get-xml').click(function(e) {
-     $.ajax({
-      type: "GET",
-      dataType: "xml",
-      url: '/feed',
-      success: function(data){
-       console.log(data);
-       var data = data;
-      }, 
-      error: function(data) {
-        console.log("my bad, try again")
-     },
-    });
-  });
+
     
     // var promise = $http.get('http://web.mta.info/developers/data/nyct/nyct_ene.xml');
     // promise.success(function(data) {
