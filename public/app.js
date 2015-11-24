@@ -12,24 +12,18 @@
       url: '/feed',
       success: function(xml){
        var data = xml; //all data - complete document is returned
-       //console.log(data);
-//       var dataOne = data.data;
-  //     console.log(dataOne);
        //alert($(data).find("responsecode").text()); //this works! yay
         $(data).find("outage").each(function(){
+          var singleOutage = this;
         //console.log($(xml).text()); //this works too! yay, it gives me all info per outage
        //console.log($(this).find("station").text()); this is working, printing all stations
-      $('#info-box').append('<p>' + ($(this).find("station").text()) +'</p>');
+      $('#info-box').append('<p class="station">' + $(singleOutage).find("station").text() +
+        '</p><p class="whichTrain"> with the ' + $(singleOutage).find("trainno").text() +
+        ' trains</p><p class="boro">Borough: ' + $(singleOutage).find("borough").text() +
+        '</p><p class="whichExactly">Elevator or escalator?' + $(singleOutage).find("equipment").text() +
+        '</p><p class="whenReturning">Estimated Return to Service on: ' + $(singleOutage).find("estimatedreturntoservice").text() + '<hr />');
 
-// data.message.body.track_list[i].track.track_name + " by " +  data.message.body.track_list[0].track.artist_name + '</div>')
-      //    alert($(this).find("station").text()); //yay gives all stations w outages 
-//      if ($(this).find("station").text()){
-        //$('#info-box').append('<p>' + this+ '</p>');
-      
-       // var data1= data.NYCOutages;
-       // console.log(data1);
         })
-//      })
      }, 
       error: function(data) {
         console.log("my bad, try again")
@@ -81,15 +75,7 @@
 
 
     
-    // var promise = $http.get('http://web.mta.info/developers/data/nyct/nyct_ene.xml');
-    // promise.success(function(data) {
-    //   controller.outages = data; //data is entire xml object
-     //   console.log(data);
-    // });
-
-
-// // });
-// }]);
+  
 
 
 // $.get('data/animals.xml', function(xml){
@@ -100,7 +86,10 @@
 // function xmlParser(xml)) {
 //     $('#load').fadeOut();
 //     $(xml).find("Book").each(function () {
-//         $(".main").append('<div class="book"><div class="title">' + $(this).find("Title").text() + '</div><div class="description">' + $(this).find("Description").text() + '</div><div class="date">Published ' + $(this).find("Date").text() + '</div></div>');
+//         $(".main").append('<div class="book"><div class="title">' + 
+//  $(this).find("Title").text() + '</div><div class="description">' + 
+//  $(this).find("Description").text() + '</div><div class="date">Published ' + 
+//  $(this).find("Date").text() + '</div></div>');
 //         $(".book").fadeIn(1000);
 
 //     });
@@ -116,20 +105,6 @@
 // })
 
 
-// +$(function(){  //document ready
-// +    $.get("http://web.mta.info/developers/data/nyct/nyct_ene.xml", function(xml){
-// +        var json = $.xml2json(xml);
-// +
-// +        alert(json.outage[1].station + '/' + json.outage[1].borough  + '/' + json.outage[1].borough +'/' + json.outage[1].estimatedreturntoservice);
-// +    })
-// +});
-// +
-// +//TEST ABOVE NEXT
-
-
-// +$.get("http://web.mta.info/developers/data/nyct/nyct_ene.xml", function(xml){
-// +  $('#info-box').html(''); 
-// +  var json = $.xml2json(xml);
 // +  
 // +  $.each(json.???rss.channel.item???, function(i, outage){
 // +    $('#info-box').append('<p>'
