@@ -1,9 +1,50 @@
-	<h1>Angularizing my Elevator Outages App</h1>
+<div>
+	<h1>Here is the MTA Outages App </h1>
 
-	 <button id="get-xml">Get XML </button>
+	<div class="signup half">
+	  <h4>Sign in for alerts and to view your preferences.</h4>
+	  
+	  <form id="signup-form" action="/users" method="post">
+	      <input type="text" name="user[username]" placeholder="Create a username">
+	      <input type="password" name="user[password]" placeholder="Enter a password">
+	      <input type="submit" value="Signup">
+	  </form>
 	
-	<div id="info-box">
-	<p> </p>
 	</div>
+	<br/>
+	
+	<a href="/users/login">Login here if you have an account</a>
+
+</div>
+
+<div ng-controller="ElevatorController as elevator">
+<!-- 	 <button id="get-xml">Get XML </button> -->
+	
+	<button ng-click="elevator.makeAPICall()">View Full List of Outages </button>
+	<div id="info-box">
+	</div>
+{{elevator.outage}}
+
+<!--  elevator.singleOutage.
+  $(data).find("outage").each(function(){
+ var singleOutage = this;
+//         //console.log($(xml).text()); //this works too! yay, it gives me all info per outage
+//        //console.log($(this).find("station").text()); this is working, printing all stations
+//       $('#info-box').append('<p class="station">' + $(singleOutage).find("station").text() +
+//         '</p><p class="whichTrain"> with the ' + $(singleOutage).find("trainno").text() +
+//         ' trains</p><p class="boro">Borough: ' + $(singleOutage).find("borough").text() +
+//         '</p><p class="whichExactly">Elevator or escalator?' + $(singleOutage).find("equipment").text() +
+//         '</p><p class="why">Reason? ' + $(singleOutage).find("reason").text() +
+//         '</p><p class="whenReturning">Estimated Return to Service on: ' + $(singleOutage).find("estimatedreturntoservice").text() + 
+//         '</p><p class="whenOutageStarted">Out of service since: ' + $(singleOutage).find("outagedate").text() +
+//         '<hr />');
+ -->
 
 
+<!-- <div ng-repeat="outage in elevator.singleOutage">
+	<p>{{outage.station}}</p>
+	<p>{{outage.trainno}}</p>
+
+
+</div> -->
+</div>
