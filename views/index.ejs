@@ -23,7 +23,10 @@
 	<button ng-click="elevator.makeAPICall()">View Full List of Outages </button>
 	<div id="info-box">
 	</div>
-{{elevator.outage}}
+<div ng-repeat=" el in elevator.outage">
+	
+	{{el.station}}
+</div>
 
 <!--  elevator.singleOutage.
   $(data).find("outage").each(function(){

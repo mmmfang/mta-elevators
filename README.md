@@ -4,4 +4,4 @@ User Stories: The purpose is to be helpful for older people or people with injur
 
 Received a developer key from the MTA but that is only necessary for real time tracking.
 
-MTA feed is returned in XML, not JSON
+MTA feed is returned in XML, not JSON. Learned a lot here... out of necessity! Took me a long time to figure out a way to avoid the Cross Origin Request Error (CORS error) because I was able to get data via the MTA XML feed but only with a Chrome extension that allowed CORS. Matt Huntington explained I should make a call to the MTA XML feed via my server, and then send that info to a route on my site, and then make an AJAX request to my own site. This also took a while for me to understand what that meant! Lastly, I wanted my code to be more Angular and less jQuery so I first Angularized it by using a $http request instead of a $.get. Then I decided to convert XML to JSON, using a plugin because I wanted to use Angular freely in my site. This was definitely a learning curve, but glad I was able to get a deep understanding of Node, CORS and XML through all my time trying to udnerstand this!
