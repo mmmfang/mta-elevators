@@ -6,11 +6,11 @@ app.controller('ElevatorController', ['$http', function($http){
   var controller=this;
   this.makeAPICall = function(){
     $.get('/feed', function(xml){ 
-      var json = $.xml2json(xml); 
-      console.log(json); //all json
-      controller.outage = json.outage;
-      console.log(json.outage) //outages as objects in array 
-  });
+        var json = $.xml2json(xml); 
+        //console.log(json); all json
+        controller.outage = json.outage;
+        console.log(json.outage) //outages as objects in array 
+    }); 
 }
 }])
 

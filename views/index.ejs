@@ -1,4 +1,4 @@
-<div>
+<div class="login-area">
 	<h1>Here is the MTA Outages App </h1>
 
 	<div class="signup half">
@@ -9,39 +9,31 @@
 	      <input type="password" name="user[password]" placeholder="Enter a password">
 	      <input type="submit" value="Signup">
 	  </form>
-	
 	</div>
+	
 	<br/>
 	
 	<a href="/users/login">Login here if you have an account</a>
-
 </div>
 
 <div ng-controller="ElevatorController as elevator">
 <!-- 	 <button id="get-xml">Get XML </button> -->
 	
-	<button ng-click="elevator.makeAPICall()">View Full List of Outages </button>
+	<button ng-click="elevator.makeAPICall()">Doubleclick to view full List of Outages </button>
 	<div id="info-box">
 	</div>
-<div ng-repeat=" el in elevator.outage">
+<div ng-repeat="el in elevator.outage">
 	
-	{{el.station}}
-</div>
+	Location: {{el.station}}
+	serving these train lines: {{el.trainno}}
+	Borough {{el.borough}}
+	Elevator or escalator? {{el.equipment}} serving the {{el.serving}}
+	Reason: {{el.reason}}
+	Estimated Return to Service on: {{el.estimatedreturntoservice}}
+	Out of Service since: {{el.outagedate}}
 
-<!--  elevator.singleOutage.
-  $(data).find("outage").each(function(){
- var singleOutage = this;
-//         //console.log($(xml).text()); //this works too! yay, it gives me all info per outage
-//        //console.log($(this).find("station").text()); this is working, printing all stations
-//       $('#info-box').append('<p class="station">' + $(singleOutage).find("station").text() +
-//         '</p><p class="whichTrain"> with the ' + $(singleOutage).find("trainno").text() +
-//         ' trains</p><p class="boro">Borough: ' + $(singleOutage).find("borough").text() +
-//         '</p><p class="whichExactly">Elevator or escalator?' + $(singleOutage).find("equipment").text() +
-//         '</p><p class="why">Reason? ' + $(singleOutage).find("reason").text() +
-//         '</p><p class="whenReturning">Estimated Return to Service on: ' + $(singleOutage).find("estimatedreturntoservice").text() + 
-//         '</p><p class="whenOutageStarted">Out of service since: ' + $(singleOutage).find("outagedate").text() +
-//         '<hr />');
- -->
+	<hr/>
+</div>
 
 
 <!-- <div ng-repeat="outage in elevator.singleOutage">
