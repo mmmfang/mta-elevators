@@ -14,6 +14,18 @@ app.controller('ElevatorController', ['$http', function($http){
 //}
 }])
 
+app.filter('equipmentFilter', function() {
+   return function(word) {
+   var charZero = word.charAt(0);
+   var charOne = word.charAt(1);
+        if (charZero=='E' && charOne=='L') {
+          return "elevator";
+        } else {
+          return "escalator";
+        }
+     }
+    
+})
 //ANGULAR ROUTES
 
 // app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
