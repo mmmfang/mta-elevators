@@ -22,7 +22,7 @@
 	
 		<div class="station">{{el.station}} serving these train lines: {{el.trainno}}</div>
 		<li>Borough {{el.borough}}</li>
-		<li>Elevator or escalator? {{el.equipment}} serving the {{el.serving | lowercase}}</li>
+		<li>Elevator or escalator? {{el.equipment | equipmentFilter}} serving the {{el.serving | lowercase}}</li>
 		<li>Reason: {{el.reason | lowercase}}</li>
 		<li>Estimated Return to Service on: {{el.estimatedreturntoservice}}</li>
 		<li>Out of Service since: {{el.outagedate}}</li>
