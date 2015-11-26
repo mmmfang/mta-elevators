@@ -16,32 +16,28 @@ app.controller('ElevatorController', ['$http', function($http){
 
 //ANGULAR ROUTES
 
-app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-  $locationProvider.html5Mode({enabled:true});
+// app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+//   $locationProvider.html5Mode({enabled:true});
 
-  $routeProvider.
-    when('/',
-    { templateUrl: '/angular_templates/main.html',
-        controller:  'ElevatorController',
-        controllerAs: 'elevator'
-    }).when('/borough',
-    { templateUrl: '/angular_templates/borough.html',
-        controller:  'ElevatorController',
-        controllerAs: 'elevator'
-  // by train line - accessible only by logging in
-    }).when('/train',
-      { templateUrl: '/angular_templates/trainline.html',
-        controller:  'ElevatorController',
-        controllerAs: 'elevator'
-    // SHOW ONE MOOD
-    // }).when('/users/:id',
-    //   { templateUrl: '/angular_templates/user.html',   ///SHOW ONE PAGE
-    //     controller:  'HeaderController',
-    //     controllerAs: 'header'
-    }).otherwise(
-      { redirectTo: '/'
-    });
- }]) ;
+//   $routeProvider.
+//     when('/borough',
+//     { templateUrl: '/angular_templates/borough.html',
+//         controller:  'ElevatorController',
+//         controllerAs: 'elevator'
+//   // by train line - accessible only by logging in
+//     }).when('/train',
+//       { templateUrl: '/angular_templates/trainline.html',
+//         controller:  'ElevatorController',
+//         controllerAs: 'elevator'
+//     // SHOW ONE MOOD
+//     // }).when('/users/:id',
+//     //   { templateUrl: '/angular_templates/user.html',   ///SHOW ONE PAGE
+//     //     controller:  'HeaderController',
+//     //     controllerAs: 'header'
+//     }).otherwise(
+//       { redirectTo: '/'
+//     });
+//  }]) ;
 
 
 

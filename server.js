@@ -23,8 +23,8 @@ function ensureAuthenticated(req,res,next) {
 } 
 
 // Set view engine 
-// server.set('views', './views');
-// server.set('view engine', 'ejs');
+server.set('views', './views');
+server.set('view engine', 'ejs');
 
 server.use(express.static('./public'));
 server.use(expressLayouts);
@@ -71,32 +71,10 @@ server.use('/feed', function(req, res) {
 
 //routes to Controllers
 var usersController = require('./controllers/users.js');
-server.use('/users', usersController);
+//server.use('/users', usersController);
 
-// var postsController = require('./controllers/posts.js');
-// server.use('/posts', postsController);
 
 //anytime i go to anything inside posts, use my post controller
-
-
-//=======Model - store in models/post.js
-// var mongoose = require('mongoose'),
-// 	Schema = mongoose.Schema;
-
-// var preferenceSchema = Schema({
-// 	station: {type: String},
-// 	trainline: {type: String},
-//	alert: {type: boolean},
-// 	body: {type: String, required: true},
-
-// }, {collection: 'preferences', strict:false});
-
-///HOW do i do the belongs to association for the user in mongo or node 
-
-// var Post = mongoose.model("Post", postSchema);
-
-// module.exports = Post;
-/////=====END OF MONGOOSE SCHEMAS TO PASTE IN LATER
 
 
 //Mongoose starts
