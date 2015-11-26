@@ -1,0 +1,31 @@
+<div class="login-area">
+	<h1>MTA Elevator and Escalator Outages App </h1>
+	<h2>aka: I gotta take the stairs??!??@#?</h2>
+	<div class="signup half">
+	  <h4>Sign in for alerts and to view your preferences.</h4>
+
+	  <form id="signup-form" action="/users" method="post">
+	      <input type="text" name="user[username]" placeholder="Create a username">
+	      <input type="password" name="user[password]" placeholder="Enter a password">
+	      <input type="submit" value="Signup">
+	  </form>
+	</div>
+	<a href="/users/login">Login to your account</a>
+</div>
+
+<br/>
+
+<div ng-controller="ElevatorController as elevator">
+	<button ng-click="elevator.makeAPICall()">Click for full list of outages </button>
+
+	<ul ng-repeat="el in elevator.outage">
+	
+		<div class="station">{{el.station}} serving these train lines: {{el.trainno}}</div>
+		<li>Borough {{el.borough}}</li>
+		<li>Elevator or escalator? {{el.equipment}} serving the {{el.serving | lowercase}}</li>
+		<li>Reason: {{el.reason | lowercase}}</li>
+		<li>Estimated Return to Service on: {{el.estimatedreturntoservice}}</li>
+		<li>Out of Service since: {{el.outagedate}}</li>
+		<hr/>
+	</ul>
+</div>

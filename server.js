@@ -14,8 +14,6 @@ var express 		= require ('express'),
 	Schema 			= mongoose.Schema;
 
 
-//var parser = require('xml2json');
-
 function ensureAuthenticated(req,res,next) {
 	if (req.session.username) {
 		next()
@@ -25,8 +23,8 @@ function ensureAuthenticated(req,res,next) {
 } 
 
 // Set view engine 
-server.set('views', './views');
-server.set('view engine', 'ejs');
+// server.set('views', './views');
+// server.set('view engine', 'ejs');
 
 server.use(express.static('./public'));
 server.use(expressLayouts);
@@ -45,16 +43,10 @@ server.get('/test', function(req,res){
 });
 
 server.get('/', function(req,res) {
-	res.render('index');
+	res.render('main');
 });
 
-//using request npm sample
-	// var grabAPI = request('http://web.mta.info/developers/data/nyct/nyct_ene.xml', function (error, response, body) {
-	//   if (!error && response.statusCode == 200) {
-	//     //console.log(body); // Show the MTA data. 
-	//     
-	// })
-
+//Grabbing external MTA XML feed
 server.use('/feed', function(req, res) {  
   req.pipe(request('http://web.mta.info/developers/data/nyct/nyct_ene.xml')).pipe(res);
 });
@@ -75,19 +67,17 @@ server.use('/feed', function(req, res) {
 // server.post('/login', home)
 // server.all('/', ensureAuthenticated)
 
+//ROUTE TO LOGIN, then directed to a customized page with username. For now I'll use it all in views ejs but in future can then shove those into public/angular-templates
 
-//======MONGOOSE SCHEMAS - shove this in models/user.js  
-// var mongoose = require('mongoose'),  
-// Schema = mongoose.Schema;
+//routes to Controllers
+var usersController = require('./controllers/users.js');
+server.use('/users', usersController);
 
-// var userSchema = Schema({
-// 	email: {type: String, required: true, unique: true}, //how to verify its an email, can i do that in chrome with the user validation
-// 	password: {type: String, required: true}
-// }, {collection: 'users', strict:false});
+// var postsController = require('./controllers/posts.js');
+// server.use('/posts', postsController);
 
-// var User = mongoose.model("User", userSchema);
-// //storing user documents in a collection called users
-// module.exports = User;
+//anytime i go to anything inside posts, use my post controller
+
 
 //=======Model - store in models/post.js
 // var mongoose = require('mongoose'),

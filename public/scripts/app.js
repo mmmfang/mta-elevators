@@ -1,18 +1,48 @@
-///ANGULAR TIME - THIS CONVERTS XML TO JSON USING XML2JSON plugin by Fyneworks///
+///ANGULAR - THIS CONVERTS XML TO JSON USING XML2JSON plugin by Fyneworks///
 
-var app = angular.module('elevatorApp', []);
+var app = angular.module('elevatorApp', ['ngRoute']);
 
 app.controller('ElevatorController', ['$http', function($http){
   var controller=this;
-  this.makeAPICall = function(){
+//  this.makeAPICall = function(){
     $.get('/feed', function(xml){ 
         var json = $.xml2json(xml); 
         //console.log(json); all json
         controller.outage = json.outage;
-        console.log(json.outage) //outages as objects in array 
+        //console.log(json.outage) //outages as objects in array 
     }); 
-}
+//}
 }])
+
+//ANGULAR ROUTES
+
+app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+  $locationProvider.html5Mode({enabled:true});
+
+  $routeProvider.
+    when('/',
+    { templateUrl: '/angular_templates/main.html',
+        controller:  'ElevatorController',
+        controllerAs: 'elevator'
+    }).when('/borough',
+    { templateUrl: '/angular_templates/borough.html',
+        controller:  'ElevatorController',
+        controllerAs: 'elevator'
+  // by train line - accessible only by logging in
+    }).when('/train',
+      { templateUrl: '/angular_templates/trainline.html',
+        controller:  'ElevatorController',
+        controllerAs: 'elevator'
+    // SHOW ONE MOOD
+    // }).when('/users/:id',
+    //   { templateUrl: '/angular_templates/user.html',   ///SHOW ONE PAGE
+    //     controller:  'HeaderController',
+    //     controllerAs: 'header'
+    }).otherwise(
+      { redirectTo: '/'
+    });
+ }]) ;
+
 
 
 ///////////////////////////////////////////////////////////////////////
