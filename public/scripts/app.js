@@ -19,12 +19,11 @@ app.filter('equipmentFilter', function() {
    var charZero = word.charAt(0);
    var charOne = word.charAt(1);
         if (charZero=='E' && charOne=='L') {
-          return "elevator";
+          return "Elevator";
         } else {
-          return "escalator";
+          return "Escalator";
         }
      }
-    
 })
 //ANGULAR ROUTES
 
