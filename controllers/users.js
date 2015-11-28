@@ -2,9 +2,11 @@ var express = require('express'),
 	router  = express.Router(),
 	User    = require('../models/user.js');
 
-//var User = require('mongoose').model('User');
 
-router.create = function(req, res, next) {
+
+var User = require('mongoose').model('User');
+
+exports.create = function(req, res, next) {
     var newUser = new User(req.body);
     newUser.save(function(err) {
         if (err) {
@@ -82,11 +84,11 @@ router.post('/', function(req,res) {
 // });
 
 
-// ////////////TO LOGOUT /////////////////////////////////////////
-// router.get('/logout', function(req, res) {
-//     req.session.currentUser = '';
-//     res.redirect(302,  '/')
-// })
+////////////TO LOGOUT /////////////////////////////////////////
+router.get('/logout', function(req, res) {
+    req.session.currentUser = '';
+    res.redirect(302,  '/')
+})
 
 
 //To edit - cant use this since you cant edit people at the moment...
