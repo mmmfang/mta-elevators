@@ -1,13 +1,10 @@
 var mongoose = require('mongoose'),  
-Schema = mongoose.Schema;
+	Schema 	 = mongoose.Schema;
 
 var userSchema = Schema({
-	email: {type: String, 
-			required: true, 
-			unique: true}, //how to verify its an email, can i do that in chrome with the user validation
-	password: {	type: String, 
-				required: true},
-	notifications: Boolean,
+		email: {type: String, required: true, unique: true}, 
+	 password: {type: String, required: true},
+ 	notifications: Boolean,
 	trainline: String
 });
 

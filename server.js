@@ -12,7 +12,7 @@ var express 		= require ('express'),
 	morgan			= require('morgan'),
 	mongoose		= require('mongoose'),
 	Schema 			= mongoose.Schema;
-
+//I have passport and passport local installed, shall I use them?
 
 function ensureAuthenticated(req,res,next) {
 	if (req.session.username) {
@@ -26,6 +26,7 @@ function ensureAuthenticated(req,res,next) {
 server.set('views', './views');
 server.set('view engine', 'ejs');
 
+//Middleware
 server.use(express.static('./public'));
 server.use(expressLayouts);
 server.use(morgan('dev'));
@@ -35,6 +36,24 @@ server.use(bodyParser.urlencoded({
 	extended:true
 }));
 server.use(bodyParser.json()); //i guess this lets me get json
+
+server.use(session({
+	secret: "savesessionsaveok",
+	resave: true,
+	saveUninitialized: false
+}));
+
+//Grabbing external MTA XML feed
+server.use('/feed', function(req, res) {  
+  req.pipe(request('http://web.mta.info/developers/data/nyct/nyct_ene.xml')).pipe(res);
+});
+
+
+//routes to Controllers
+var usersController = require('./controllers/users.js');
+server.use('/users', usersController);
+////anytime i go to anything inside /users, use my user controller
+
 
 //Testing Route
 server.get('/test', function(req,res){
@@ -46,22 +65,6 @@ server.get('/', function(req,res) {
 	res.render('main');
 });
 
-//Grabbing external MTA XML feed
-server.use('/feed', function(req, res) {  
-  req.pipe(request('http://web.mta.info/developers/data/nyct/nyct_ene.xml')).pipe(res);
-});
-
-//let's say i saved things like data in the db. id get it by in my controllers/users.js, after ive required router, router.post(function(req,res)) --to create a new user  / router.get(function(req,res{User.find(function(err, users){ if (err)res.send(err); res.json(users);});});  to get all the Users
-
-//Get a users/user:id
-//router.get(function(req,res){
-// 	User.findById(req.params.user_id, function (err, user){
-// 		if (err) 
-// 			res.send(err);
-// 		res.json(bear);
-// 	})
-// })
-
 //Get Routes Time
 // server.get('/', home)
 // server.post('/login', home)
@@ -69,18 +72,34 @@ server.use('/feed', function(req, res) {
 
 //ROUTE TO LOGIN, then directed to a customized page with username. For now I'll use it all in views ejs but in future can then shove those into public/angular-templates
 
-//routes to Controllers
-var usersController = require('./controllers/users.js');
-//server.use('/users', usersController);
+
+//utility routes
+
+server.use(function(req,res,next){
+	console.log("req dot body", req.body);
+	console.log("req dot params", req.params);
+	console.log("req dot sesion", req.session);
+	next(); //remember to continue on to the next part of ssesion setting
+})
+server.use(function(req,res,next){
+	req.session.viewCount = req.session.viewCount || 0;
+	req.session.viewCount++;
+	console.log("Number of views", req.session.viewCount);
+	next();
+})
+
+//catchall routes, as last resort
+server.use(function(req,res,next){
+	res.send("Sorry, no more pages, continue coding!!");
+	res.end();
+})
 
 
-//anytime i go to anything inside posts, use my post controller
 
-
-//Mongoose starts
+//Mongoose starts, debugger is on
 mongoose.set('debug', true);
 
-//connecting to Mongo database
+//Connecting to Mongo database
 mongoose.connect(MONGOURI + "/" + dbname);
 
 var db = mongoose.connection;
