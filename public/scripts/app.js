@@ -6,10 +6,8 @@ app.controller('ElevatorController', ['$http', function($http){
   var controller=this;
 //  this.makeAPICall = function(){
     $.get('/feed', function(xml){ 
-        var json = $.xml2json(xml); 
-        //console.log(json); all json
-        controller.outage = json.outage;
-        //console.log(json.outage) //outages as objects in array 
+        var json = $.xml2json(xml); //json will get all the json
+        controller.outage = json.outage; //will get outages as objects in an array
     }); 
 //}
 }])
@@ -27,36 +25,33 @@ app.filter('equipmentFilter', function() {
 })
 
 // function searchSite(){
-//     var inputted=document.getElementById("searchinput").value;
-//     var searchForm=document.getElementById("searchForm");
-//   searchForm.action="https://mta-outages.herokuapp.com?lst=0&fs=1&q="+inputted;
-//   searchForm.submit();
-// }
 
 //ANGULAR ROUTES
 
-// app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-//   $locationProvider.html5Mode({enabled:true});
+app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+  $locationProvider.html5Mode({enabled:true});
 
-//   $routeProvider.
-//     when('/borough',
-//     { templateUrl: '/angular_templates/borough.html',
-//         controller:  'ElevatorController',
-//         controllerAs: 'elevator'
-//   // by train line - accessible only by logging in
-//     }).when('/train',
-//       { templateUrl: '/angular_templates/trainline.html',
-//         controller:  'ElevatorController',
-//         controllerAs: 'elevator'
-//     // SHOW ONE MOOD
-//     // }).when('/users/:id',
-//     //   { templateUrl: '/angular_templates/user.html',   ///SHOW ONE PAGE
-//     //     controller:  'HeaderController',
-//     //     controllerAs: 'header'
-//     }).otherwise(
-//       { redirectTo: '/'
-//     });
-//  }]) ;
+  $routeProvider.
+    when('/about',
+    { templateUrl: 'angular_templates/about.html',
+        controller: 'ElevatorController',
+        controllerAs: 'elevator'
+    }).when('/borough',
+    { templateUrl: 'angular_templates/borough.html',
+        controller:  'ElevatorController',
+        controllerAs: 'elevator'
+    }).when('/train',
+      { templateUrl: 'angular_templates/trainline.html',
+        controller:  'ElevatorController',
+        controllerAs: 'elevator'
+    // }).when('/users/:id',
+    //   { templateUrl: 'angular_templates/show.html.erb',
+    //     controller:  'ElevatorController',
+    //     controllerAs: 'elevator'    
+    }).otherwise(
+      { redirectTo: '/welcome'
+    });
+ }]) ;
 
 
 

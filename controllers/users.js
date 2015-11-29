@@ -3,24 +3,13 @@ var express = require('express'),
 	User    = require('../models/user.js');
 
 
-//Get a users/user:id
-//router.get(function(req,res){
-//  User.findById(req.session.currentUser.user_id, function (err, user){
-//      if (err) 
-//          res.send(err);
-//       } else {
-//      res.redirect('/:userid/preferences';
-    //}
-//  })
-// })
-
 router.get('/users', function(req, res) { 
   res.render('/main');
 });
 
 //BCRYPT TIME
 
-//NEW
+//NEW USER
 router.post('/new', function (req, res) {
 
   User.findOne({ email: req.body.user.email }, function (err, user) {

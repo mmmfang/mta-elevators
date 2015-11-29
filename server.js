@@ -79,17 +79,6 @@ server.get('/test', function(req,res){
 //   res.redirect('/');
 // });
 
-//in express, anything we attach to res.locals gets merged with those view context objects that we pass in at the time of our render call
-//so by setting it here in middleware we make it automatically avail to us so we dont have to set it on render calls
-// function setFlash(req,res,next) {
-// 	res.locals.flash = req.flash.message;
-// 	next();
-// }
-
-// server.use(function setFlash(req,res,next) {
-// 	console.log(res.locals.flash);
-// });
-
 //only allow loggedin users to see this page
 server.use('/welcome', function(req,res){
 	if (req.session.currentUser) {
@@ -97,19 +86,36 @@ server.use('/welcome', function(req,res){
   			currentUser: req.session.currentUser
   		})
   	} else { 		
-   	 res.redirect(302, '/');
+   	 res.redirect(301, '/');
   }
 });
 
-// server.use('/welcome', function(req, res) {
-// 	if (req.session.currentUser) {
-// 		res.render('welcome', {
-// 			currentUser: req.session.currentUser
-// 		});
-// 	} else {
-// 		res.redirect(301, '/users/login');
-// 	}
-// });
+
+
+//in express, anything we attach to res.locals gets merged with those view context objects that we pass in at the time of our render call
+//so by setting it here in middleware we make it automatically avail to us so we dont have to set it on render calls
+function setFlash(req,res,next) {
+	res.locals.flash = {
+		notice: req.flash('notice'),
+		error: req.flash('error')
+	}	
+	next();
+}
+
+server.use(function setFlash(req,res,next) {
+	console.log(res.locals.flash);
+});
+
+var getErrorMessage = function(err) {
+if (err.errors) {
+for (var errName in err.errors) {
+if (err.errors[errName].message) return err.errors[errName].
+message;
+}
+} else {
+return 'Unknown server error';
+}
+};
 
 
 

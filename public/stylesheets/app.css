@@ -7,7 +7,7 @@ h1, h2 {
 }
 
 body {
-/*	background-color: lightblue;*/
+	background-color: lightblue;
 }
 
 .station {
@@ -21,16 +21,19 @@ li {
 
 .outage-box {
 	display: inline-block;
-	border: 1px solid black;
+	border: 1px solid #404040;
 	margin:2%;
 	text-align:left;
 	padding:0;
 }
 
 .station{
-	background-color: black;
+/*	background-color: #404040;*/
+	background-color:black;
 	color: white;
-	border: 1px solid white;
+	font-family: 'Lato', sans-serif;
+/*	text-shadow: 1px solid black;*/
+	border: 1px solid black;
 	text-align: center;
 	width:100%;
 	padding-left:0;
