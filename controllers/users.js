@@ -80,12 +80,12 @@ router.get('/logout', function(req, res) {
 
 
 //////SHOW  -  goodness
-router.get('/:id', function(req, res) {
+router.get('/:id/show', function(req, res) {
   User.findById(req.params.id, function(err, specifiedProfile){
     if (err) {
       console.log("error getting id I think??");
     } else {
-      console.log(specifiedProfile);
+      console.log('specifiedProfile is', specifiedProfile);
       res.render('users/show', {
         user: specifiedProfile
       });
@@ -98,11 +98,12 @@ router.get('/:id', function(req, res) {
 router.post('/:_id/', function(req,res){
  User.findOne({_id: req.session.currentUser._id}, function(err,currentUser){
      if (err) { 
-         console.log("can't edit user profile")
+         console.log("can't edit user profile");
      } else if (currentUser) {
          if (currentUser._id === req.params.id) {
              res.render('/:_id', {user: currentUser});
          } else {
+              console.log('redirecting to users/userIDNUMBER/edit');
              res.redirect(302,'/users/' + currentUser._id + '/edit');    
          }
      } else {

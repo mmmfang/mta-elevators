@@ -91,7 +91,6 @@ server.use('/welcome', function(req,res){
 });
 
 
-
 //in express, anything we attach to res.locals gets merged with those view context objects that we pass in at the time of our render call
 //so by setting it here in middleware we make it automatically avail to us so we dont have to set it on render calls
 function setFlash(req,res,next) {
@@ -116,15 +115,6 @@ message;
 return 'Unknown server error';
 }
 };
-
-
-
-
-//Get Routes Time
-// server.get('/', home)
-// server.post('/login', home)
-// server.all('/', ensureAuthenticated)
-
 
 
 //utility routes

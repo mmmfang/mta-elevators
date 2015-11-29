@@ -8,8 +8,8 @@ app.controller('ElevatorController', ['$http', function($http){
     $.get('/feed', function(xml){ 
         var json = $.xml2json(xml); //json will get all the json
         controller.outage = json.outage; //will get outages as objects in an array
-    }); 
-//}
+    }) 
+//   } 
 }])
 
 app.filter('equipmentFilter', function() {
@@ -33,21 +33,25 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 
   $routeProvider.
     when('/about',
-    { templateUrl: 'angular_templates/about.html',
+    { templateUrl: 'angular-templates/about.html',
         controller: 'ElevatorController',
         controllerAs: 'elevator'
     }).when('/borough',
-    { templateUrl: 'angular_templates/borough.html',
+    { templateUrl: 'angular-templates/borough.html',
         controller:  'ElevatorController',
         controllerAs: 'elevator'
     }).when('/train',
-      { templateUrl: 'angular_templates/trainline.html',
+      { templateUrl: 'angular-templates/trainline.html',
         controller:  'ElevatorController',
         controllerAs: 'elevator'
     // }).when('/users/:id',
-    //   { templateUrl: 'angular_templates/show.html.erb',
+    //   { templateUrl: '/angular-templates/show.html.ejs',
     //     controller:  'ElevatorController',
-    //     controllerAs: 'elevator'    
+    //     controllerAs: 'elevator'
+    // }).when('/users/:id/edit',
+    //   { templateUrl: '/angular-templates/edit.html.ejs',
+    //     controller:  'ElevatorController',
+    //     controllerAs: 'elevator'            
     }).otherwise(
       { redirectTo: '/welcome'
     });
