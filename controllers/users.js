@@ -43,7 +43,7 @@ router.post('/new', function (req, res) {
             } else {
                req.session.currentUser = savedUser;
                console.log("new current user saved as", req.session.currentUser)
-               res.redirect(302, '/welcome');
+               res.redirect(301, '/welcome');
             }
           });
         });
@@ -68,8 +68,8 @@ router.post('/login', function (req, res) {
       bcrypt.compare(req.body.user.password, user.passwordDigest, function (compareErr, match) {
         if (match) {
           req.session.currentUser = user;
-          console.log('successfully loggedin')
-          res.redirect(302, '/welcome');
+          console.log('successfully loggedin');
+          res.redirect(301, '/welcome');
         } else {
           req.flash('error', 'email and password do not match')
           res.redirect(302, '/');
