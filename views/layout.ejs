@@ -36,6 +36,10 @@
   </div><!-- /.container-fluid -->
 </nav>
  
+    <% if (message) { %>
+      <div class="flash"><%= message %></div>
+    <% } %>
+
   <%- body %>
 
 <div ng-view></div>

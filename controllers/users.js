@@ -3,85 +3,78 @@ var express = require('express'),
 	User    = require('../models/user.js');
 
 
-
-var User = require('mongoose').model('User');
-
-exports.create = function(req, res, next) {
-    var newUser = new User(req.body);
-    newUser.save(function(err) {
-        if (err) {
-            return next(err);
-        }
-        else {
-            res.json(user);
-        }
-    });
-};
-
-//let's say i saved things like data in the db. id get it by in my controllers/users.js, after ive required router, 
-//router.post(function(req,res)) --to create a new user  /
-//router.get(function(req,res{
-    // User.find(function(err, users){ 
-    //     if (err)res.send(err); 
-    //     res.json(users);});});  to get all the Users
-
 //Get a users/user:id
 //router.get(function(req,res){
-//  User.findById(req.params.user_id, function (err, user){
+//  User.findById(req.session.currentUser.user_id, function (err, user){
 //      if (err) 
 //          res.send(err);
-//      res.json(bear);
+//       } else {
+//      res.redirect('/:userid/preferences';
+    //}
 //  })
 // })
 
-//COPIED FROM PROJ2
+//BCRYPT TIME
 
+//NEW
+router.post('/new', function (req, res) {
 
-///////////// SIGN UP ROUTE ////////////////////////////////////
-router.get('/new', function(req, res) {
-    res.render('users/new');
-}); //works 
+  User.findOne({ email: req.body.user.email }, function (err, user) {
+    if (err) {
+      console.log(err);
+    } else if (user) {
+      req.flash('error', 'email is taken');
+      res.redirect(302, '/');
+    } else {
+      bcrypt.genSalt(10, function (saltErr, salt) {
+        bcrypt.hash(req.body.user.password, salt, function (hashErr, hash) {
+          var newUser = new User({
+            email: req.body.user.email,            
+            passwordDigest: hash 
+          });
 
-
-// ////////////AFTER GOING THRU SIGNUP PAGE ////////////////////////
-router.post('/', function(req,res) {
-    var newUser = User(req.body.user);
-    console.log("new user is", newUser);
-
-    req.session.currentUser = newUser.username; 
-
-    newUser.save(function(err, user){
-        if (err) {
-            console.log("new user not added");
-        } else {
-            // res.redirect(301, "users/" + user._id);
-            res.redirect(301, 'welcome');
-        }
-    }) 
+          newUser.save(function (saveErr, savedUser) {
+            if (saveErr) {
+              req.flash('error', 'unable to save new user')
+            } else {
+               req.session.currentUser = savedUser;
+               res.redirect(302, '/welcome');
+            }
+          });
+        });
+      });
+    }
+  });
 });
 
 
-// /////////////////// LOGIN ROUTE ////////////////////////////////
-// router.get('/login', function(req,res){
-//     res.render('session/login');
-// }) //works
 
+//////////// AFTER GOING THRU LOGIN PAGE ///////////////////////
 
-// //////////// AFTER GOING THRU LOGIN PAGE ///////////////////////
-// router.post('/login', function(req,res){
-//     var attempt = req.body.user;
-//     console.log("attempt is ", attempt);
-//     User.findOne({username: attempt.username}, function(err, user) {
-//         console.log(user);
-//         if (user && user.password=== attempt.password) {
-//             req.session.currentUser = user.username;
-//             res.redirect(301,"welcome");
-//         } else {
-//             console.log("no user w that name");
-//             res.redirect(301, "users/new")
-//         }
-//     });
-// });
+//login
+router.post('/login', function (req, res) {
+    var attempt = req.body.user;
+    console.log("attempt is ", attempt);
+
+  User.findOne({ email: attempt.email }, function (err, user) {
+    if (err) {
+      console.log(err);
+    } else if (user) {
+      bcrypt.compare(attempt.password, user.passwordDigest, function (compareErr, match) {
+        if (match) {
+          req.session.currentUser = user;
+          res.redirect(302, '/welcome');
+        } else {
+          req.flash('error', 'email and password do not match')
+          res.redirect(302, '/');
+        }
+      });
+    } else {
+      console.log('strange error');
+      res.redirect(302, '/');
+    }
+  });
+});
 
 
 ////////////TO LOGOUT /////////////////////////////////////////

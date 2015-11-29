@@ -1,4 +1,4 @@
-<div class="login-area">
+<div class="intro-area">
 	<h1>MTA Elevator and Escalator Outages</h1>
 	<h4>Also known as...</h4>
 	<h2>Do I have to take the stairs??!?@#?</h2>
@@ -7,15 +7,16 @@
 	<div class="signup half">
 	  <h4>Sign in for alerts and to view your preferences.</h4>
 
-	  <form id="signup-form" action="/users" method="post">
-	      <input type="text" name="user[username]" placeholder="Create a username">
+	  <form id="signup-form" action="/users/new" method="post">
+	      <input type="text" name="user[email]" placeholder="Enter your email">
 	      <input type="password" name="user[password]" placeholder="Enter a password">
 	      <input type="submit" value="Signup">
 	  </form>
 	</div>
+
 	<button ng-show="">Login to your account</button>
-	    <form id="login-form" action="/users" method="post">
-	      <input type="text" name="user[username]" placeholder="username">
+	    <form id="login-form" action="/users/login" method="post">
+	      <input type="text" name="user[email]" placeholder="email">
 	      <input type="password" name="user[password]" placeholder="password">
 	      <input type="submit" value="Login">
 	    </form>

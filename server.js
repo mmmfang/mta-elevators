@@ -12,6 +12,8 @@ var express 		= require ('express'),
 	morgan			= require('morgan'),
 	mongoose		= require('mongoose'),
 	Schema 			= mongoose.Schema;
+	bcrypt 			= require('bcryptjs'),
+	flash 			= require('connect-flash');
 
 function ensureAuthenticated(req,res,next) {
 	if (req.session.username) {
@@ -27,9 +29,7 @@ server.use(expressLayouts);
 server.use(morgan('dev'));
 server.use(methodOverride('_method'));
 
-server.use(bodyParser.urlencoded({
-	extended:true
-}));
+server.use(bodyParser.urlencoded({extended:true}));
 server.use(bodyParser.json()); //i guess this lets me get json
 
 server.use(session({
@@ -37,25 +37,23 @@ server.use(session({
 	resave: true,
 	saveUninitialized: false
 }));
+server.use(flash());
 
 // Set view engine 
 server.set('views', './views');
 server.set('view engine', 'ejs');
 
-server.use(passport.initialize());
-server.use(passport.session())
 
 //Grabbing external MTA XML feed
 server.use('/feed', function(req, res) {  
   req.pipe(request('http://web.mta.info/developers/data/nyct/nyct_ene.xml')).pipe(res);
 });
 
-
 //routes to Controllers
 var usersController = require('./controllers/users.js');
 server.use('/users', usersController);
 ////anytime i go to anything inside /users, use my user controller
-var passport = require('./config/passport');
+
 
 //Testing Route
 server.get('/test', function(req,res){
@@ -67,13 +65,41 @@ server.get('/', function(req,res) {
 	res.render('main');
 });
 
+
+//testing npm connect-flash
+server.get('/flash', function(req, res){
+  // Set a flash message by passing the key, followed by the value, to req.flash(). 
+  req.flash('info', 'Flash is back!')
+  res.redirect('/');
+});
+
+//in express, anything we attach to res.locals gets merged with those view context objects that we pass in at the time of our render call
+//so by setting it here in middleware we make it automatically avail to us so we dont have to set it on render calls
+function setFlash(req,res,next) {
+	res.locals.flash = req.flash.message;
+	next();
+}
+
+server.use(function setFlash(req,res,next) {
+	console.log(res.locals.flash);
+});
+
+//only allow loggedin users to see this page
+server.get('/welcome', function(req,res){
+	if(req.session.currentUser) {
+  		res.render('welcome');
+  	} else {
+    res.redirect(302, '/');
+  }
+});
+
 server.get('/welcome/:user_id', function(req,res){
-	console.log(req.query);
-	console.log(req.params);
+	console.log("req params is", req.params);
+	console.log("req body is", req.body)
 });
 server.get('/users/:user_id', function(req,res){
-	console.log(req.query);
-	console.log(req.params);
+	console.log("req params is", req.params);
+	console.log("req body is", req.body)
 });
 
 //Get Routes Time
@@ -81,12 +107,6 @@ server.get('/users/:user_id', function(req,res){
 // server.post('/login', home)
 // server.all('/', ensureAuthenticated)
 
-// module.exports = function(app) {
-// app.route('/users')
-// .post(users.create)
-// .get(users.list);
-// };
-//ROUTE TO LOGIN, then directed to a customized page with username. For now I'll use it all in views ejs but in future can then shove those into public/angular-templates
 
 
 //utility routes

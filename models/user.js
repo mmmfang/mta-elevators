@@ -2,11 +2,11 @@ var mongoose = require('mongoose'),
 	Schema 	 = mongoose.Schema;
 
 var userSchema = new Schema({
-		email: {type: String, required: true, unique: true}, 
-	 password: {type: String, required: true},
+	email: {type: String, required: true, unique: true, match: [/.+\@.+\..+/, "Please fill a valid e-mail address"]}, 
+	passwordDigest: {type: String, required: true},
  	notifications: Boolean,
 	trainline: String
-});
+}, {collection: 'users', strict:false});
 
 
 // userSchema.post('save', function(next) {
