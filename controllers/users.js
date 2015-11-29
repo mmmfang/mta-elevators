@@ -38,7 +38,8 @@ router.post('/new', function (req, res) {
               req.flash('error', 'unable to save new user')
             } else {
                req.session.currentUser = savedUser;
-               res.redirect(302, '/welcome');
+               console.log("new current user saved as", req.session.currentUser)
+               res.redirect(302, 'index');
             }
           });
         });
@@ -63,7 +64,7 @@ router.post('/login', function (req, res) {
       bcrypt.compare(attempt.password, user.passwordDigest, function (compareErr, match) {
         if (match) {
           req.session.currentUser = user;
-          res.redirect(302, '/welcome');
+          res.redirect(302, 'index');
         } else {
           req.flash('error', 'email and password do not match')
           res.redirect(302, '/');

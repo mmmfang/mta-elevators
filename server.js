@@ -89,7 +89,7 @@ server.use(function setFlash(req,res,next) {
 //only allow loggedin users to see this page
 server.get('/welcome', function(req,res){
 	if(req.session.currentUser) {
-  		res.render('welcome');
+  		res.render('index');
   	} else {
     res.redirect(302, '/');
   }

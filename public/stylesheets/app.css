@@ -18,3 +18,22 @@ body {
 li {
 	list-style: none;
 }
+
+.outage-box {
+	display: inline-block;
+	border: 1px solid black;
+	margin:2%;
+	text-align:left;
+	padding:1%;
+}
+
+.station{
+	background-color: black;
+	color: white;
+	border: 1px solid white;
+	text-align: center;
+	width:100%;
+	padding-left:0;
+	padding-right:0;
+	font-size: 1.2em;
+}
