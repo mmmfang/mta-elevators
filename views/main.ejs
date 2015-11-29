@@ -9,17 +9,20 @@
 
 	  <form id="signup-form" action="/users/new" method="post">
 	      <input type="text" name="user[email]" placeholder="Enter your email">
-	      <input type="password" name="user[password]" placeholder="Enter a password">
+	      <input type="password" name="user[password]" placeholder="Enter a new password">
 	      <input type="submit" value="Signup">
 	  </form>
 	</div>
 
-	<button ng-show="">Login to your account</button>
+	<a ng-click="loginButton=!loginButton"> Login to your existing account</a>
+
+      <div ng-show="loginButton">
 	    <form id="login-form" action="/users/login" method="post">
-	      <input type="text" name="user[email]" placeholder="email">
-	      <input type="password" name="user[password]" placeholder="password">
+	      <input type="text" name="user[email]" placeholder="Login with Email">
+	      <input type="password" name="user[password]" placeholder="Enter your password">
 	      <input type="submit" value="Login">
 	    </form>
+	   </div>
 </div>
 
 <hr>
