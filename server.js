@@ -67,13 +67,18 @@ server.get('/test', function(req,res){
 });
 
 
+ // server.use(function (req, res, next) {
+ //    res.locals.flash  = req.session.flash || {};
+ //    req.session.flash = {};
+ //    next();
+ //  }); 
 
 //testing npm connect-flash
-server.get('/flash', function(req, res){
-  // Set a flash message by passing the key, followed by the value, to req.flash(). 
-  req.flash('info', 'Flash is back!')
-  res.redirect('/');
-});
+// server.get('/flash', function(req, res){
+//   // Set a flash message by passing the key, followed by the value, to req.flash(). 
+//   req.flash('info', 'Flash is back!')
+//   res.redirect('/');
+// });
 
 //in express, anything we attach to res.locals gets merged with those view context objects that we pass in at the time of our render call
 //so by setting it here in middleware we make it automatically avail to us so we dont have to set it on render calls
@@ -87,13 +92,23 @@ server.use(function setFlash(req,res,next) {
 });
 
 //only allow loggedin users to see this page
-server.get('/welcome', function(req,res){
-	if(req.session.currentUser) {
+server.use('/welcome', function(req,res){
+	if (req.session.currentUser) {
   		res.render('index');
   	} else {
     res.redirect(302, '/');
   }
 });
+
+// server.use('/welcome', function(req, res) {
+// 	if (req.session.currentUser) {
+// 		res.render('welcome', {
+// 			currentUser: req.session.currentUser
+// 		});
+// 	} else {
+// 		res.redirect(301, '/users/login');
+// 	}
+// });
 
 server.get('/welcome/:user_id', function(req,res){
 	console.log("req params is", req.params);

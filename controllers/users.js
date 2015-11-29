@@ -14,6 +14,10 @@ var express = require('express'),
 //  })
 // })
 
+router.get('/users', function(req, res) { 
+  res.render('/main');
+});
+
 //BCRYPT TIME
 
 //NEW
@@ -39,7 +43,7 @@ router.post('/new', function (req, res) {
             } else {
                req.session.currentUser = savedUser;
                console.log("new current user saved as", req.session.currentUser)
-               res.redirect(302, 'index');
+               res.redirect(302, '/welcome');
             }
           });
         });
@@ -54,17 +58,18 @@ router.post('/new', function (req, res) {
 
 //login
 router.post('/login', function (req, res) {
-    var attempt = req.body.user;
-    console.log("attempt is ", attempt);
+    // var attempt = req.body.user;
+    // console.log("attempt is ", attempt);
 
-  User.findOne({ email: attempt.email }, function (err, user) {
+  User.findOne({ email: req.body.user.email }, function (err, user) {
     if (err) {
-      console.log(err);
+      console.log('hitting first error prob');
     } else if (user) {
-      bcrypt.compare(attempt.password, user.passwordDigest, function (compareErr, match) {
+      bcrypt.compare(req.body.user.password, user.passwordDigest, function (compareErr, match) {
         if (match) {
           req.session.currentUser = user;
-          res.redirect(302, 'index');
+          console.log('successfully loggedin')
+          res.redirect(302, '/welcome');
         } else {
           req.flash('error', 'email and password do not match')
           res.redirect(302, '/');
