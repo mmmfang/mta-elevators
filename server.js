@@ -112,14 +112,8 @@ server.use('/welcome', function(req,res){
 // 	}
 // });
 
-server.get('/welcome/:user_id', function(req,res){
-	console.log("req params is", req.params);
-	console.log("req body is", req.body)
-});
-server.get('/users/:user_id', function(req,res){
-	console.log("req params is", req.params);
-	console.log("req body is", req.body)
-});
+
+
 
 //Get Routes Time
 // server.get('/', home)
@@ -133,7 +127,7 @@ server.get('/users/:user_id', function(req,res){
 server.use(function(req,res,next){
 	console.log("req dot body", req.body);
 	console.log("req dot params", req.params);
-	console.log("req dot sesion", req.session);
+	console.log("req dot session", req.session);
 	next(); //remember to continue on to the next part of ssesion setting
 })
 server.use(function(req,res,next){

@@ -90,24 +90,30 @@ router.get('/logout', function(req, res) {
 })
 
 
-//To edit - cant use this since you cant edit people at the moment...
-// router.get('/:id/edit', function(req,res){
-//  User.findOne({_id: req.session.currentUser._id}, function(err,currentUser){
-//      if (err) { 
-//          console.log("can't edit, u not logged in")
-//      } else if (currentUser) {
-//          if (currentUser._id === req.params.id) {
-//              res.render('/edit', {user:currentUser});
-//          } else {
-//              res.redirect(302,'/users/' + currentUser._id + '/edit');    
-//          }
-//      } else {
-//          delete res.session.currentUser;
-//          res.redirect(302, '/session/new');
-//        }
+router.get('/:_id', function(req,res){
+  console.log("req params is", req.params);
+  console.log("req body is", req.body);
+  res.render('/users/:_id/edit');
+});
+
+//To edit - let's see maybe you will work
+router.post('/:_id/', function(req,res){
+ User.findOne({_id: req.session.currentUser._id}, function(err,currentUser){
+     if (err) { 
+         console.log("can't edit user profile")
+     } else if (currentUser) {
+         if (currentUser._id === req.params.id) {
+             res.render('/edit', {user: currentUser});
+         } else {
+             res.redirect(302,'/users/' + currentUser._id);    
+         }
+     } else {
+        console.log('redirecting away from editing user profile, not sure why')
+         res.redirect(302, '/');
+       }
         
-//  })
-// });
+ })
+});
 
 // //SHOW ALL USERS - not applicable
 
