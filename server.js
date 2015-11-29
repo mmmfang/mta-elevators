@@ -56,14 +56,16 @@ server.use('/users', usersController);
 
 
 //Testing Route
+server.get('/', function(req,res) {
+	res.render('main');
+});
+
+
 server.get('/test', function(req,res){
 	res.write("Welcome to my app about outages");
 	res.end();
 });
 
-server.get('/', function(req,res) {
-	res.render('main');
-});
 
 
 //testing npm connect-flash
