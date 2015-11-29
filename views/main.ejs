@@ -28,13 +28,18 @@
 	<br/>
 	<ul class="outage-box" ng-repeat="el in elevator.outage">
 	
-		<div class="station">{{el.station}} serving the: {{el.trainno}}</div>
-		<li>Borough {{el.borough}}</li>
-		<li>Elevator or escalator? {{el.equipment | equipmentFilter}}</li>
-		<li>Location of outage: {{el.serving | lowercase}}</li>
-		<li>Reason: {{el.reason | lowercase}}</li>
-		<li>Estimated Return to Service on: {{el.estimatedreturntoservice}}</li>
-		<li>Out of Service since: {{el.outagedate}}</li>
-		<hr/>
+		<div class="station">
+			<li class="station-name">{{el.station}}</li>
+			<li class="trainlisting">serving these trains: {{el.trainno}}</li>
+		</div>
+		<div class="box-bottom">
+			<li>Borough {{el.borough}}</li>
+			<li>Elevator or escalator? {{el.equipment | equipmentFilter}}</li>
+			<li>Location of outage: {{el.serving | lowercase}}</li>
+			<li>Reason: {{el.reason | lowercase}}</li>
+			<li>Back in Service on: {{el.estimatedreturntoservice}}</li>
+			<li>Out of Service since: {{el.outagedate}}</li>
+		</div>
+
 	</ul>
 </div>

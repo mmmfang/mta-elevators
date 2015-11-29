@@ -25,6 +25,14 @@ app.filter('equipmentFilter', function() {
         }
      }
 })
+
+// function searchSite(){
+//     var inputted=document.getElementById("searchinput").value;
+//     var searchForm=document.getElementById("searchForm");
+//   searchForm.action="https://mta-outages.herokuapp.com?lst=0&fs=1&q="+inputted;
+//   searchForm.submit();
+// }
+
 //ANGULAR ROUTES
 
 // app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {

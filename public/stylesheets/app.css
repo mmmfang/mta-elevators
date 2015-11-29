@@ -24,7 +24,7 @@ li {
 	border: 1px solid black;
 	margin:2%;
 	text-align:left;
-	padding:1%;
+	padding:0;
 }
 
 .station{
@@ -36,4 +36,17 @@ li {
 	padding-left:0;
 	padding-right:0;
 	font-size: 1.2em;
+}
+
+.station-name {
+
+}
+
+.trainlisting {
+
+}
+
+.box-bottom {
+	padding-left:10px;
+	padding-right:10px;
 }
