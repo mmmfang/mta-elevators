@@ -94,10 +94,10 @@ server.get('/test', function(req,res){
 //only allow loggedin users to see this page
 server.use('/welcome', function(req,res){
 	if (req.session.currentUser) {
-  		res.render('index');
-  		console.log('im hitting welcome if');
-  	} else {
-  		console.log('im hitting welcome else');
+  		res.render('index', {
+  			currentUser: req.session.currentUser
+  		})
+  	} else { 		
    	 res.redirect(302, '/');
   }
 });
