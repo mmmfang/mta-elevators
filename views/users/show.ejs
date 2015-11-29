@@ -1,10 +1,11 @@
-<div>
-    <h3>User Profile Page</h3>
+<%= user._id %>
 
-You are logged in as  <%= user.email %>
-    
-    <form action="/users/<%= user._id %>?_method=PATCH" method="post">
+ <%= user.email %>
 
+ Preferences here I guess
+
+   <form action="/users/<%= user._id %>?_method=POST" method="post">
+   		you want notifications, man?
         <label for="yes">Yes</label>
         <input id='yes' type="radio" value='true' name='user[notifications]'>
         <label for="no">No</label>
@@ -40,4 +41,3 @@ You are logged in as  <%= user.email %>
         <input type="submit">
 
     </form>
-</div>

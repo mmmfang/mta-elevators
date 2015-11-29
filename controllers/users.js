@@ -90,11 +90,20 @@ router.get('/logout', function(req, res) {
 })
 
 
-router.get('/:_id', function(req,res){
-  console.log("req params is", req.params);
-  console.log("req body is", req.body);
-  res.render('/users/:_id/edit');
+//////SHOW  -  goodness
+router.get('/:id', function(req, res) {
+  User.findById(req.params.id, function(err, specifiedProfile){
+    if (err) {
+      console.log("error getting id I think??");
+    } else {
+      console.log(specifiedProfile);
+      res.render('users/show', {
+        user: specifiedProfile
+      });
+    }
+  }) 
 });
+
 
 //To edit - let's see maybe you will work
 router.post('/:_id/', function(req,res){
@@ -103,9 +112,9 @@ router.post('/:_id/', function(req,res){
          console.log("can't edit user profile")
      } else if (currentUser) {
          if (currentUser._id === req.params.id) {
-             res.render('/edit', {user: currentUser});
+             res.render('/:_id', {user: currentUser});
          } else {
-             res.redirect(302,'/users/' + currentUser._id);    
+             res.redirect(302,'/users/' + currentUser._id + '/edit');    
          }
      } else {
         console.log('redirecting away from editing user profile, not sure why')
@@ -114,6 +123,38 @@ router.post('/:_id/', function(req,res){
         
  })
 });
+
+
+router.get('/:id/edit', function(req, res) {
+  console.log("req params is", req.params);
+  console.log("req body is", req.body);
+
+  User.findById(req.params.id, function(err, specifiedProfile){
+    if (err) {
+      console.log("error editing user");
+    } else {
+      res.render('users/edit', {
+        user: specifiedProfile
+      });
+    }
+  }) 
+});
+
+
+//UPDATE POST (PATCH Part) - at long last, you work. Thank you 30 year old Jesus
+
+router.patch('/:id', function(req, res) {
+  var userOptions = req.body.user;
+  User.findByIdAndUpdate(req.params.id, userOptions, function(err, specifiedProfile){
+    if (err) {
+      console.log("error patching user prof");
+    } else {
+ //     res.redirect(301, '/user/'+req.params.id);
+      console.log("updated!!!");
+       res.redirect(301, '/'+ specifiedProfile._id)
+    }
+  })
+}); 
 
 // //SHOW ALL USERS - not applicable
 

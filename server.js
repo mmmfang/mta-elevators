@@ -60,9 +60,8 @@ server.get('/', function(req,res) {
 	res.render('main');
 });
 
-
 server.get('/test', function(req,res){
-	res.write("Welcome to my app about outages");
+	res.write("Welcome to my cooltastic app about outages");
 	res.end();
 });
 
