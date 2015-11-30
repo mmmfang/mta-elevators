@@ -67,15 +67,19 @@ server.use(function (req, res, next) {
 
 //sendfile to render angular
 
-server.get("/",  function (req, res) {
+server.get('/',  function (req, res) {
 	res.render('main');
 })
 
-server.get('/index', function(req,res){
-	res.redirect(301, 'angular-templates/angular')
-	// , {
-	// 	currentUser:req.session.currentUser
-	// });
+// server.get('/index', function(req,res){
+// 	res.redirect(301, 'angular-templates/angular')
+// 	// , {
+// 	// 	currentUser:req.session.currentUser
+// 	// });
+// });
+
+server.get('/index', function(req, res){
+    res.sendfile(__dirname + '/public/angular.html');
 });
 
 // server.get('/index', function(req, res) {
