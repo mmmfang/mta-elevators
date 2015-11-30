@@ -6,18 +6,23 @@
 <h4> User Preferences, if any</h4>
 
 This will display if you have chosen to receive notifications.
-<%user.notifications  %>
+<strong><%=user.notifications  %> </strong>
 
+<br/>
 <br/>
 
 This will display if you have chosen which train line to be notified about.
-<%user.trainline%>
+<strong><%=user.trainline%> </strong>
 
+<br/>
 <br/>
   
 
 Click submit to edit your profile.
+
 <br/>
+<br/>
+  
 <form action="/users/<%= user._id %>/" method="post">
     <input type="submit">    
 </form>

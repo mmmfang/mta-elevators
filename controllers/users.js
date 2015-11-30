@@ -77,13 +77,13 @@ router.get('/logout', function(req, res) {
 
 //////SHOW  
 router.get('/:id/', function(req, res) {
-  User.findById(req.params.id, function(err, specifiedProfile){
+  User.findById(req.params.id, function(err, currentUser){
     if (err) {
       console.log("error getting id I think??");
     } else {
-      console.log('specifiedProfile is', specifiedProfile);
+      console.log('currentUser is', currentUser);
       res.render('users/show', {
-        user: specifiedProfile
+        user: currentUser
       });
     }
   }) 
@@ -97,7 +97,8 @@ router.post('/:_id/', function(req,res){
          console.log("can't edit user profile");
      } else if (currentUser) {
          if (currentUser._id === req.params.id) {
-             res.render('/:_id', {user: currentUser});
+             res.render('/:_id', {
+                user: currentUser});
          } else {
               console.log('redirecting to users/userIDNUMBER/edit');
              res.redirect(302,'/users/' + currentUser._id + '/edit');    
@@ -115,12 +116,12 @@ router.get('/:id/edit', function(req, res) {
   console.log("req params is", req.params);
   console.log("req body is", req.body);
 
-  User.findById(req.params.id, function(err, specifiedProfile){
+  User.findById(req.params.id, function(err, currentUser){
     if (err) {
       console.log("error editing user");
     } else {
       res.render('users/edit', {
-        user: specifiedProfile
+        user: currentUser
       });
     }
   }) 
@@ -131,13 +132,12 @@ router.get('/:id/edit', function(req, res) {
 
 router.patch('/:id', function(req, res) {
   var userOptions = req.body.user;
-  User.findByIdAndUpdate(req.params.id, userOptions, function(err, specifiedProfile){
+  User.findByIdAndUpdate(req.params.id, userOptions, function(err, currentUser){
     if (err) {
-      console.log("error patching user prof");
+      console.log("error patching user pref");
     } else {
- //     res.redirect(301, '/user/'+req.params.id);
-      console.log("updated!!!");
-       res.redirect(301, '/users/' + req.params.id)
+      console.log("updated preferences!!!");
+      res.redirect(301, '/users/' + req.params.id);
     }
   })
 }); 
