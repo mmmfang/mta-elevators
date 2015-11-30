@@ -78,10 +78,12 @@ server.get('/',  function (req, res) {
 // 	// });
 // });
 
-// server.get('/index', function(req, res){
-//     res.sendFile(__dirname + '/public/angular.html')
-// });
-
+// server.get("/index", function (req, res) {
+//   res.sendFile("angular.html", {
+//     root: __dirname + "/public/"
+//   })
+// })
+//BELOW LINE WORKS TO RENDER ANGULAR AS LONG AS NG ROUTE IS UP TOO
 server.get('/index', function(req, res){
     res.sendFile(__dirname + '/public/angular.html');
 });
