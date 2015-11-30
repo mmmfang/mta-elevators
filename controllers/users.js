@@ -76,7 +76,7 @@ router.get('/logout', function(req, res) {
 
 
 //////SHOW  
-router.get('/:id/show', function(req, res) {
+router.get('/:id/', function(req, res) {
   User.findById(req.params.id, function(err, specifiedProfile){
     if (err) {
       console.log("error getting id I think??");
@@ -137,7 +137,7 @@ router.patch('/:id', function(req, res) {
     } else {
  //     res.redirect(301, '/user/'+req.params.id);
       console.log("updated!!!");
-       res.redirect(301, '/'+ specifiedProfile._id)
+       res.redirect(301, '/users/' + req.params.id)
     }
   })
 }); 
