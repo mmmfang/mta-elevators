@@ -54,11 +54,12 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
   $locationProvider.html5Mode({enabled:true});
 
   $routeProvider.
-    when('/angular', 
-    { templateUrl: 'angular-templates/angular.html.ejs',
-        controller: 'ElevatorController',
-        controllerAs: 'elevator'
-    }).when('/about',
+    // when('/index', 
+    // { templateUrl: 'angular-templates/angular.html.ejs',
+    //     controller: 'ElevatorController',
+    //     controllerAs: 'elevator'
+    // }).
+    when('/about',
     { templateUrl: 'angular-templates/about.html',
         controller: 'ElevatorController',
         controllerAs: 'elevator'
