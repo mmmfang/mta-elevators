@@ -12,7 +12,7 @@ router.post('/new', function (req, res) {
     if (err) {
       console.log(err);
     } else if (user) {
-      req.flash('message', 'email is taken');
+      req.session.flash.emailTaken ='Email in use';
       res.redirect(302, '/');
     } else {
       bcrypt.genSalt(10, function (saltErr, salt) {
@@ -24,7 +24,7 @@ router.post('/new', function (req, res) {
 
           newUser.save(function (saveErr, savedUser) {
             if (saveErr) {
-              req.flash('message', 'unable to save new user')
+              req.session.flash.userNotSaved = 'Unable to save as new user';
             } else {
                req.session.currentUser = savedUser;
                console.log("new current user saved as", req.session.currentUser)
@@ -48,7 +48,7 @@ router.post('/login', function (req, res) {
   User.findOne({ email: attempt.email }, function (err, user) {
     if (err) {
       console.log('hitting first error prob');
-      req.flash('message', 'error logging in')
+      req.session.flash.loginError = 'Error logging in';
     } else if (user) {
       bcrypt.compare(attempt.password, user.passwordDigest, function (compareErr, match) {
         if (match) {
@@ -56,7 +56,7 @@ router.post('/login', function (req, res) {
           console.log('successfully loggedin');
           res.redirect(301, '/welcome');
         } else {
-          req.flash('message', 'email and password do not match')
+          req.session.flash.emailPasswordMismatch = 'Email and password do not match';
           res.redirect(302, '/');
         }
       });
@@ -71,7 +71,7 @@ router.post('/login', function (req, res) {
 ////////////TO LOGOUT /////////////////////////////////////////
 router.get('/logout', function(req, res) {
     req.session.currentUser = '';
-    req.flash('message', 'successfully logged out')
+    console.log('You have successfully logged out');
     res.redirect(302,  '/')
 })
 

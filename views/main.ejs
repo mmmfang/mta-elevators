@@ -11,6 +11,18 @@
 	      <input type="text" name="user[email]" placeholder="Enter your email">
 	      <input type="password" name="user[password]" placeholder="Enter a new password">
 	      <input type="submit" value="Signup">
+		    <% if (flash.emailTaken) { %>
+	        <p class = "errormessage"><%= flash.duplicateName %></p>
+	        <%} %>
+	        <% if (flash.userNotSaved) { %>
+	        <p class = "errormessage"><%=flash.userNotSaved%></p>
+	        <%} %>
+	        <% if (flash.needEmail) { %>
+	        <p class = "errormessage"><%= flash.needEmail %></p>
+	        <%} %>
+	        <% if (flash.needPassword) { %>
+	        <p class = "errormessage"><%= flash.needPassword %></p>
+	        <%} %>
 	  </form>
 	</div>
 
@@ -21,13 +33,22 @@
 	      <input type="text" name="user[email]" placeholder="Login with Email">
 	      <input type="password" name="user[password]" placeholder="Enter your password">
 	      <input type="submit" value="Login">
+	      <% if (flash.loginError) { %>
+	         <p class = "alert alert-danger"><%=flash.loginError%></p>
+	         <%} %>
+	         <% if (flash.emailPasswordMismatch) { %>
+	         <p class = "alert alert-danger"><%=flash.emailPasswordMismatch%></p>
+	         <%} %>
 	    </form>
 	   </div>
 </div>
 
 <hr>
 <div ng-controller="ElevatorController as elevator" class="centered">
-	<button ng-click="elevator.makeAPICall()">Click for full list of outages </button>
+	<button ng-click="elevator.makeAPICall()">Click for full list of equipment outages </button>
+	<button><a href="/borough">Click for outages by borough </a></button>
+	<button><a href="/trainline">Click for outages by train line </a></button>
+
 	<br/>
 	<ul class="outage-box" ng-repeat="el in elevator.outage">
 	

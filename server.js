@@ -12,8 +12,7 @@ var express 		= require ('express'),
 	morgan			= require('morgan'),
 	mongoose		= require('mongoose'),
 	Schema 			= mongoose.Schema;
-	bcrypt 			= require('bcryptjs'),
-	flash 			= require('connect-flash');
+	bcrypt 			= require('bcryptjs');
 
 function ensureAuthenticated(req,res,next) {
 	if (req.session.username) {
@@ -37,7 +36,7 @@ server.use(session({
 	resave: true,
 	saveUninitialized: false
 }));
-server.use(flash());
+
 
 // Set view engine 
 server.set('views', './views');
@@ -60,11 +59,17 @@ server.get('/test', function(req,res){
 	res.end();
 });
 
+server.use(function (req, res, next) {
+  res.locals.flash  = req.session.flash || {};
+  req.session.flash = {};
+  next();
+});
+
 //sendfile to render angular
 
 server.get("/",  function (req, res) {
-	res.render('main', {message: req.flash('message')})
-  })
+	res.render('main');
+})
 
 // server.get('/index', function(req, res) {
 //     res.sendFile(path.join(__dirname + '/index.html'));

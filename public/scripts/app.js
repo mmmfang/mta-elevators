@@ -1,4 +1,4 @@
-///ANGULAR - THIS CONVERTS XML TO JSON USING XML2JSON plugin by Fyneworks///
+///ANGULAR - CONVERTS XML TO JSON USING XML2JSON plugin by Fyneworks///
 
 var app = angular.module('elevatorApp', ['ngRoute']);
 
@@ -12,6 +12,10 @@ app.controller('ElevatorController', ['$http', function($http){
 //   } 
 }])
 
+
+//Angular Custom Filters
+
+//To display whether elevator or escalator is broken
 app.filter('equipmentFilter', function() {
    return function(word) {
    var charZero = word.charAt(0);
@@ -24,6 +28,7 @@ app.filter('equipmentFilter', function() {
      }
 })
 
+//To display full borough name from abbreviation provided
 app.filter('boroFilter', function() {
    return function(word) {
    var charZero = word.charAt(0);
@@ -42,8 +47,6 @@ app.filter('boroFilter', function() {
      }
 })
 
-
-// function searchSite(){
 
 //ANGULAR ROUTES
 
@@ -66,15 +69,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     }).when('/train',
       { templateUrl: 'angular-templates/trainline.html',
         controller:  'ElevatorController',
-        controllerAs: 'elevator'
-    // }).when('/users/:id',
-    //   { templateUrl: '/angular-templates/show.html.ejs',
-    //     controller:  'ElevatorController',
-    //     controllerAs: 'elevator'
-    // }).when('/users/:id/edit',
-    //   { templateUrl: '/angular-templates/edit.html.ejs',
-    //     controller:  'ElevatorController',
-    //     controllerAs: 'elevator'            
+        controllerAs: 'elevator'          
     }).otherwise(
       { redirectTo: '/welcome'
     });
