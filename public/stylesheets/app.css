@@ -64,3 +64,12 @@ button {
 a {
 	font-size: 1.2em;
 }
+
+.bg-white {
+	background-color: white;
+}
+
+img {
+	height: 175px;
+	width: 175px;
+}
