@@ -72,12 +72,14 @@ server.get("/",  function (req, res) {
 })
 
 server.get('/index', function(req,res){
-	res.render('angular', {
-		currentUser:req.session.currentUser
-	});
+	res.redirect(301, 'angular-templates/angular')
+	// , {
+	// 	currentUser:req.session.currentUser
+	// });
 });
+
 // server.get('/index', function(req, res) {
-//     res.sendFile(path.join(__dirname + '/index.html'));
+//     res.sendFile(path.join(__dirname + '/angular.html.ejs'));
 // });
 
 // server.get('/about',function(req,res){
