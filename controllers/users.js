@@ -3,20 +3,16 @@ var express = require('express'),
 	User    = require('../models/user.js');
 
 
-router.get('/users', function(req, res) { 
-  res.render('/main');
-});
-
 //BCRYPT TIME
 
-//NEW USER
+//NEW USER TIME
 router.post('/new', function (req, res) {
 
   User.findOne({ email: req.body.user.email }, function (err, user) {
     if (err) {
       console.log(err);
     } else if (user) {
-      req.flash('error', 'email is taken');
+      req.flash('message', 'email is taken');
       res.redirect(302, '/');
     } else {
       bcrypt.genSalt(10, function (saltErr, salt) {
@@ -28,7 +24,7 @@ router.post('/new', function (req, res) {
 
           newUser.save(function (saveErr, savedUser) {
             if (saveErr) {
-              req.flash('error', 'unable to save new user')
+              req.flash('message', 'unable to save new user')
             } else {
                req.session.currentUser = savedUser;
                console.log("new current user saved as", req.session.currentUser)
@@ -42,25 +38,25 @@ router.post('/new', function (req, res) {
 });
 
 
-
 //////////// AFTER GOING THRU LOGIN PAGE ///////////////////////
 
 //login
 router.post('/login', function (req, res) {
-    // var attempt = req.body.user;
-    // console.log("attempt is ", attempt);
+     var attempt = req.body.user;
+     console.log("attempt is ", attempt);
 
-  User.findOne({ email: req.body.user.email }, function (err, user) {
+  User.findOne({ email: attempt.email }, function (err, user) {
     if (err) {
       console.log('hitting first error prob');
+      req.flash('message', 'error logging in')
     } else if (user) {
-      bcrypt.compare(req.body.user.password, user.passwordDigest, function (compareErr, match) {
+      bcrypt.compare(attempt.password, user.passwordDigest, function (compareErr, match) {
         if (match) {
           req.session.currentUser = user;
           console.log('successfully loggedin');
           res.redirect(301, '/welcome');
         } else {
-          req.flash('error', 'email and password do not match')
+          req.flash('message', 'email and password do not match')
           res.redirect(302, '/');
         }
       });
@@ -75,6 +71,7 @@ router.post('/login', function (req, res) {
 ////////////TO LOGOUT /////////////////////////////////////////
 router.get('/logout', function(req, res) {
     req.session.currentUser = '';
+    req.flash('message', 'successfully logged out')
     res.redirect(302,  '/')
 })
 

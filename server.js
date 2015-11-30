@@ -55,66 +55,47 @@ server.use('/users', usersController);
 ////anytime i go to anything inside /users, use my user controller
 
 
-//Testing Route
-server.get('/', function(req,res) {
-	res.render('main');
-});
-
 server.get('/test', function(req,res){
 	res.write("Welcome to my cooltastic app about outages");
 	res.end();
 });
 
+//sendfile to render angular
 
- // server.use(function (req, res, next) {
- //    res.locals.flash  = req.session.flash || {};
- //    req.session.flash = {};
- //    next();
- //  }); 
+server.get("/",  function (req, res) {
+	res.render('main', {message: req.flash('message')})
+  })
 
-//testing npm connect-flash
-// server.get('/flash', function(req, res){
-//   // Set a flash message by passing the key, followed by the value, to req.flash(). 
-//   req.flash('info', 'Flash is back!')
-//   res.redirect('/');
+// server.get('/index', function(req, res) {
+//     res.sendFile(path.join(__dirname + '/index.html'));
 // });
+
+// server.get('/about',function(req,res){
+//   res.sendFile(path.join(__dirname+'/about.html'));
+// });
+
+// server.get('/borough',function(req,res){
+//   res.sendFile(path.join(__dirname+'/borough.html'));
+// });
+
+
+// server.get('/trainline',function(req,res){
+//   res.sendFile(path.join(__dirname+'/trainline.html'));
+// });
+
+
+
 
 //only allow loggedin users to see this page
 server.use('/welcome', function(req,res){
 	if (req.session.currentUser) {
-  		res.render('index', {
+  		res.render('welcome', {
   			currentUser: req.session.currentUser
   		})
   	} else { 		
    	 res.redirect(301, '/');
   }
 });
-
-
-//in express, anything we attach to res.locals gets merged with those view context objects that we pass in at the time of our render call
-//so by setting it here in middleware we make it automatically avail to us so we dont have to set it on render calls
-function setFlash(req,res,next) {
-	res.locals.flash = {
-		notice: req.flash('notice'),
-		error: req.flash('error')
-	}	
-	next();
-}
-
-server.use(function setFlash(req,res,next) {
-	console.log(res.locals.flash);
-});
-
-var getErrorMessage = function(err) {
-if (err.errors) {
-for (var errName in err.errors) {
-if (err.errors[errName].message) return err.errors[errName].
-message;
-}
-} else {
-return 'Unknown server error';
-}
-};
 
 
 //utility routes
@@ -130,7 +111,7 @@ server.use(function(req,res,next){
 	req.session.viewCount++;
 	console.log("Number of views", req.session.viewCount);
 	next();
-})
+}) 
 
 //catchall routes, as last resort
 server.use(function(req,res,next){

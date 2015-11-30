@@ -36,7 +36,7 @@
 			<li class="trainlisting">serving these trains: {{el.trainno}}</li>
 		</div>
 		<div class="box-bottom">
-			<li>Borough: {{el.borough}}</li>
+			<li>Borough: {{el.borough | boroFilter}}</li>
 			<li>Elevator or escalator? {{el.equipment | equipmentFilter}}</li>
 			<li>Location of outage: {{el.serving | lowercase}}</li>
 			<li>Reason: {{el.reason | lowercase}}</li>

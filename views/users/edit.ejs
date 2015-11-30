@@ -2,6 +2,8 @@
     <h3>User Profile Page</h3>
 
 You are logged in as  <%= user.email %>
+
+    <div>
     
     <form action="/users/<%= user._id %>?_method=PATCH" method="post">
 
@@ -40,4 +42,5 @@ You are logged in as  <%= user.email %>
         <input type="submit">
 
     </form>
+    </div>
 </div>

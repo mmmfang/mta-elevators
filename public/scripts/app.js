@@ -24,6 +24,25 @@ app.filter('equipmentFilter', function() {
      }
 })
 
+app.filter('boroFilter', function() {
+   return function(word) {
+   var charZero = word.charAt(0);
+   var charOne = word.charAt(1);
+        if (charZero=='M' && charOne=='N') {
+          return "Manhattan";
+        } else if (charZero=='Q' && charOne=='N') {
+          return "Queens";
+        } else if (charZero=='B' && charOne=='K') {
+          return "Brooklyn"
+        } else if (charZero=='B' && charOne=='X') {
+          return "Bronx"
+        } else {
+          return "N/A"
+        }
+     }
+})
+
+
 // function searchSite(){
 
 //ANGULAR ROUTES
@@ -32,7 +51,11 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
   $locationProvider.html5Mode({enabled:true});
 
   $routeProvider.
-    when('/about',
+    when('/userprofile', 
+    { templateUrl: 'angular-templates/temp.html',
+        controller: 'ElevatorController',
+        controllerAs: 'elevator'
+    }).when('/about',
     { templateUrl: 'angular-templates/about.html',
         controller: 'ElevatorController',
         controllerAs: 'elevator'
