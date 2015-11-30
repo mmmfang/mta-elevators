@@ -72,7 +72,9 @@ server.get("/",  function (req, res) {
 })
 
 server.get('/index', function(req,res){
-	res.render('index');
+	res.render('angular', {
+		currentUser:req.session.currentUser
+	});
 });
 // server.get('/index', function(req, res) {
 //     res.sendFile(path.join(__dirname + '/index.html'));

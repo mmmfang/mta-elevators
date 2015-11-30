@@ -3,13 +3,13 @@
 var app = angular.module('elevatorApp', ['ngRoute']);
 
 app.controller('ElevatorController', ['$http', function($http){
-  var controller=this;
-//  this.makeAPICall = function(){
+ var controller=this;
+  this.makeAPICall = function(){
     $.get('/feed', function(xml){ 
         var json = $.xml2json(xml); //json will get all the json
         controller.outage = json.outage; //will get outages as objects in an array
     }) 
-//   } 
+   } 
 }])
 
 
@@ -54,8 +54,8 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
   $locationProvider.html5Mode({enabled:true});
 
   $routeProvider.
-    when('/userprofile', 
-    { templateUrl: 'angular-templates/temp.html',
+    when('/angular', 
+    { templateUrl: 'angular-templates/angular.html.ejs',
         controller: 'ElevatorController',
         controllerAs: 'elevator'
     }).when('/about',
