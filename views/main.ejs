@@ -5,20 +5,28 @@
 
 	<hr>
 	<div ng-hide="loginButton" class="signup half">
-	  <h4>Sign in for alerts and to view your preferences.</h4>
+	  <h4>Sign up to receive alerts and to view your preferences.</h4>
 
 	  <form id="signup-form" action="/users/new" method="post">
 	      <input type="text" name="user[email]" placeholder="Enter your email">
 	      <input type="password" name="user[password]" placeholder="Enter a new password">
 	      <input type="submit" value="Signup">
-		    <% if (flash.emailTaken) { %>
-	        <p class = "errormessage"><%= flash.duplicateName %></p>
-	        <%} %>
-	        <% if (flash.userNotSaved) { %>
-	        <p class = "errormessage"><%=flash.userNotSaved%></p>
-	        <%} %>
 	  </form>
 	</div>
+
+
+	<% if (flash.emailTaken) { %>
+	    <p class = "alert alert-danger"><%= flash.emailTaken %></p>
+	<% } %>
+	<% if (flash.userNotSaved) { %>
+	    <p class = "alert alert-danger"><%=flash.userNotSaved%></p>
+	<% } %>
+  	<% if (flash.loginError) { %>
+     <p class = "alert alert-danger"><%=flash.loginError%></p>
+     <%} %>
+     <% if (flash.emailPasswordMismatch) { %>
+     <p class = "alert alert-danger"><%=flash.emailPasswordMismatch%></p>
+     <%} %>
 
 	<a ng-click="loginButton=!loginButton"> Login to your existing account</a>
 
@@ -27,12 +35,7 @@
 	      <input type="text" name="user[email]" placeholder="Login with Email">
 	      <input type="password" name="user[password]" placeholder="Enter your password">
 	      <input type="submit" value="Login">
-	      <% if (flash.loginError) { %>
-	         <p class = "alert alert-danger"><%=flash.loginError%></p>
-	         <%} %>
-	         <% if (flash.emailPasswordMismatch) { %>
-	         <p class = "alert alert-danger"><%=flash.emailPasswordMismatch%></p>
-	         <%} %>
+
 	    </form>
 	   </div>
 </div>

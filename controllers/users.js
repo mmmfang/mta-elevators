@@ -24,7 +24,7 @@ router.post('/new', function (req, res) {
 
           newUser.save(function (saveErr, savedUser) {
             if (saveErr) {
-              req.session.flash.userNotSaved = 'Unable to save as new user';
+              req.session.flash.userNotSaved='Unable to save as new user';
             } else {
                req.session.currentUser = savedUser;
                console.log("new current user saved as", req.session.currentUser)
@@ -56,7 +56,7 @@ router.post('/login', function (req, res) {
           console.log('successfully loggedin');
           res.redirect(301, '/welcome');
         } else {
-          req.session.flash.emailPasswordMismatch = 'Email and password do not match';
+          req.session.flash.emailPasswordMismatch='Email and password do not match';
           res.redirect(302, '/');
         }
       });

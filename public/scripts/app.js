@@ -3,6 +3,7 @@
 var app = angular.module('elevatorApp', ['ngRoute']);
 
 app.controller('ElevatorController', ['$http', '$scope', function($http, $scope){
+ 
  var controller=this;
   this.makeAPICall = function(){
     $.get('/feed', function(xml){ 
@@ -10,6 +11,7 @@ app.controller('ElevatorController', ['$http', '$scope', function($http, $scope)
         controller.outage = json.outage; //will get outages as objects in an array
     }) 
    }; this.makeAPICall();
+   
 }])
 
 
