@@ -71,7 +71,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         controller:  'ElevatorController',
         controllerAs: 'elevator'          
     }).otherwise(
-      { redirectTo: '/welcome'
+      { redirectTo: '/'
     });
  }]) ;
 

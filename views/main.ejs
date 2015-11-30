@@ -17,12 +17,6 @@
 	        <% if (flash.userNotSaved) { %>
 	        <p class = "errormessage"><%=flash.userNotSaved%></p>
 	        <%} %>
-	        <% if (flash.needEmail) { %>
-	        <p class = "errormessage"><%= flash.needEmail %></p>
-	        <%} %>
-	        <% if (flash.needPassword) { %>
-	        <p class = "errormessage"><%= flash.needPassword %></p>
-	        <%} %>
 	  </form>
 	</div>
 
@@ -46,8 +40,8 @@
 <hr>
 <div ng-controller="ElevatorController as elevator" class="centered">
 	<button ng-click="elevator.makeAPICall()">Click for full list of equipment outages </button>
-	<button><a href="/borough">Click for outages by borough </a></button>
-	<button><a href="/trainline">Click for outages by train line </a></button>
+	<br/>
+	<a href="/index">For more options, click through</a>
 
 	<br/>
 	<ul class="outage-box" ng-repeat="el in elevator.outage">

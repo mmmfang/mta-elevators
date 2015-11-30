@@ -71,7 +71,6 @@ router.post('/login', function (req, res) {
 ////////////TO LOGOUT /////////////////////////////////////////
 router.get('/logout', function(req, res) {
     req.session.currentUser = '';
-    console.log('You have successfully logged out');
     res.redirect(302,  '/')
 })
 

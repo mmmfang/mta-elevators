@@ -71,6 +71,9 @@ server.get("/",  function (req, res) {
 	res.render('main');
 })
 
+server.get('/index', function(req,res){
+	res.render('index');
+});
 // server.get('/index', function(req, res) {
 //     res.sendFile(path.join(__dirname + '/index.html'));
 // });
