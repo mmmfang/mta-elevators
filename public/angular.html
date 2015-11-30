@@ -31,21 +31,28 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
+         <li><a href="/">Home</a></li>
          <li><a href="/about">About this App</a></li>        
-        	 <li><a href="/users/logout">Logout</a></li>
+        	 
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
  
-This is my main ANGULAR PAGE
-<% if (currentUser) { %>
-<h2>Welcome <%= currentUser.email %></h2>
-<% } %>
 
-NG Routes - beep angular tempates
+<h2>Elevator and Escalator Outages Across the NYC Subway System</h2>
 
-<div ng-view></div>
+
+<a href='/all'>Click for full list of outages</a> | 
+<a href='/borough'>Click to see the outages by borough</a> |
+<a href='/trainline'>Click for outages by train line</a>
+<div ng-controller="ElevatorController as elevator" class="centered">
+
+
+
+  <div ng-view></div>
+</div>
+
 
 	<script src="/scripts/app.js"></script>
   <script src="/scripts/jquery.xml2json.js"></script>

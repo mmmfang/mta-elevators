@@ -2,14 +2,14 @@
 
 var app = angular.module('elevatorApp', ['ngRoute']);
 
-app.controller('ElevatorController', ['$http', function($http){
+app.controller('ElevatorController', ['$http', '$scope', function($http, $scope){
  var controller=this;
   this.makeAPICall = function(){
     $.get('/feed', function(xml){ 
         var json = $.xml2json(xml); //json will get all the json
         controller.outage = json.outage; //will get outages as objects in an array
     }) 
-   } 
+   }; this.makeAPICall();
 }])
 
 
@@ -54,20 +54,19 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
   $locationProvider.html5Mode({enabled:true});
 
   $routeProvider.
-    // when('/index', 
-    // { templateUrl: 'angular.html',
-    //     controller: 'ElevatorController',
-    //     controllerAs: 'elevator'
-    // }).
     when('/about',
     { templateUrl: '/angular-templates/about.html',
         controller: 'ElevatorController',
+        controllerAs: 'elevator'
+    }).when('/all',
+    { templateUrl: 'angular-templates/all.html',
+        controller:  'ElevatorController',
         controllerAs: 'elevator'
     }).when('/borough',
     { templateUrl: 'angular-templates/borough.html',
         controller:  'ElevatorController',
         controllerAs: 'elevator'
-    }).when('/train',
+    }).when('/trainline',
       { templateUrl: 'angular-templates/trainline.html',
         controller:  'ElevatorController',
         controllerAs: 'elevator'          

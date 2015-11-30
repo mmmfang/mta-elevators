@@ -54,3 +54,13 @@ li {
 	padding-left:10px;
 	padding-right:10px;
 }
+
+button {
+	background-color: darkcyan;
+	color:white;
+	font-family: 'Montserrat', sans-serif;
+}
+
+a {
+	font-size: 1.2em;
+}

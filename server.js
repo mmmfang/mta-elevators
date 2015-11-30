@@ -71,13 +71,6 @@ server.get('/',  function (req, res) {
 	res.render('main');
 })
 
-// server.get('/index', function(req,res){
-// 	res.redirect(301, 'angular-templates/angular')
-// 	// , {
-// 	// 	currentUser:req.session.currentUser
-// 	// });
-// });
-
 // server.get("/index", function (req, res) {
 //   res.sendFile("angular.html", {
 //     root: __dirname + "/public/"
@@ -87,25 +80,6 @@ server.get('/',  function (req, res) {
 server.get('/index', function(req, res){
     res.sendFile(__dirname + '/public/angular.html');
 });
-
-// server.get('/index', function(req, res) {
-//     res.sendFile(path.join(__dirname + '/angular.html'));
-// });
-
-// server.get('/about',function(req,res){
-//   res.sendFile(path.join(__dirname+'/about.html'));
-// });
-
-// server.get('/borough',function(req,res){
-//   res.sendFile(path.join(__dirname+'/borough.html'));
-// });
-
-
-// server.get('/trainline',function(req,res){
-//   res.sendFile(path.join(__dirname+'/trainline.html'));
-// });
-
-
 
 
 //only allow loggedin users to see this page
@@ -143,7 +117,7 @@ server.use(function(req,res,next){
 
 
 
-//Mongoose starts, debugger is on
+//Mongoose time, debugger is on
 mongoose.set('debug', true);
 
 //Connecting to Mongo database
