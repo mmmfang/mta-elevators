@@ -75,7 +75,7 @@ router.get('/logout', function(req, res) {
 })
 
 
-//////SHOW  -  goodness
+//////SHOW  
 router.get('/:id/show', function(req, res) {
   User.findById(req.params.id, function(err, specifiedProfile){
     if (err) {

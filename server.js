@@ -78,12 +78,16 @@ server.get('/',  function (req, res) {
 // 	// });
 // });
 
+// server.get('/index', function(req, res){
+//     res.sendFile(__dirname + '/public/angular.html')
+// });
+
 server.get('/index', function(req, res){
-    res.sendfile(__dirname + '/public/angular.html');
+    res.sendFile(__dirname + '/public/angular.html');
 });
 
 // server.get('/index', function(req, res) {
-//     res.sendFile(path.join(__dirname + '/angular.html.ejs'));
+//     res.sendFile(path.join(__dirname + '/angular.html'));
 // });
 
 // server.get('/about',function(req,res){

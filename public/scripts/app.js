@@ -55,7 +55,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 
   $routeProvider.
     when('/index', 
-    { templateUrl: 'index.html',
+    { templateUrl: 'angular.html',
         controller: 'ElevatorController',
         controllerAs: 'elevator'
     }).
