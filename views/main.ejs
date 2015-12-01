@@ -6,12 +6,19 @@
 	<hr>
 	<div ng-hide="loginButton" class="signup half">
 	  <h4>Sign up to receive alerts and to view your preferences.</h4>
-
-	  <form id="signup-form" action="/users/new" method="post">
-	      <input type="text" name="user[email]" placeholder="Enter your email">
-	      <input type="password" name="user[password]" placeholder="Enter a new password">
-	      <input type="submit" value="Signup">
-	  </form>
+	  
+	   <form class="form-inline" id="signup-form" action="/users/new" method="post">
+	     <div class="form-group">
+	      	<label for="signupemail" class="sr-only">Email</label>
+	      	<input id="signupemail" type="text" name="user[email]" placeholder="Enter your email">
+	     </div>
+		
+		 <div class="form-group">
+	      	<label for="signuppass" class="sr-only">Password</label>
+	      	<input id="signuppass"type="password" name="user[password]" placeholder="Enter a new password">
+	     </div>
+	      	<input type="submit" value="Signup">
+	    </form>
 	</div>
 
 
@@ -31,11 +38,18 @@
 	<a ng-click="loginButton=!loginButton"> Login to your existing account</a>
 
       <div ng-show="loginButton">
-	    <form id="login-form" action="/users/login" method="post">
-	      <input type="text" name="user[email]" placeholder="Login with Email">
-	      <input type="password" name="user[password]" placeholder="Enter your password">
-	      <input type="submit" value="Login">
 
+		<form id="login-form" class="form-inline" action="/users/login" method="post">
+	       <div class="form-group">
+	       		<label for="loginemail" class="sr-only">Email</label>
+	    	    <input type="text" id="loginemail"name="user[email]" placeholder="Login with Email">
+	    	</div>
+
+	       <div class="form-group">
+	    		<label for="signinemail" class="sr-only">Email</label>
+	      		<input id="signinemail" type="password" name="user[password]" placeholder="Enter your password">
+	      	</div>
+	        	<input type="submit" value="Login">
 	    </form>
 	   </div>
 </div>
