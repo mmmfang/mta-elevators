@@ -7,12 +7,25 @@ var app = angular.module('elevatorApp', ['ngRoute']);
 app.controller('ElevatorController', ['$http', '$scope', function($http, $scope){
  
  var controller=this;
+
   this.makeAPICall = function(){
     $.get('/feed', function(xml){ 
         var json = $.xml2json(xml); //json will get all the json
         controller.outage = json.outage; //will get outages as objects in an array
     }) 
-   }; this.makeAPICall();
+   }; 
+   this.makeAPICall();
+
+  // this.getQueens = function(value){
+  //     controller.makeAPICall();
+  // if (value.borough == "QNS") {
+  //   return "Queens";
+  // }    
+      // if outage.borough="QNS"
+
+   // }; 
+
+
 
 }])
 
@@ -50,6 +63,16 @@ app.filter('boroFilter', function() {
         }
      }
 })
+
+// var test = "test string",
+//     characters = test.split('');
+// and then loop using regular Javascript, or else you can iterate over the string's characters using jQuery by
+
+// var test = "test string";
+
+// $(test.split('')).each(function (index,character) {
+//     alert(character);
+// });
 
 
 // app.filter('BoroughFilter', function(value){

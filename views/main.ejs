@@ -48,20 +48,24 @@
 	<a href="/index">For more search options without logging in, click through</a>
 
 	<br/>
-	<ul class="outage-box" ng-repeat="el in elevator.outage">
-	
+	<ul class="outage-box" ng-repeat="el in elevator.outage | filter:searchel">
 		<div class="station">
 			<li class="station-name">{{el.station}}</li>
 			<li class="trainlisting">serving these trains: {{el.trainno}}</li>
 		</div>
-		<div class="box-bottom">
-			<li>Borough: {{el.borough | boroFilter}}</li>
-			<li>Elevator or escalator? {{el.equipment | equipmentFilter}}</li>
-			<li>Location of outage: {{el.serving | lowercase}}</li>
-			<li>Reason: {{el.reason | lowercase}}</li>
-			<li>Back in Service on: {{el.estimatedreturntoservice}}</li>
-			<li>Out of Service since: {{el.outagedate}}</li>
-		</div>
-
+		<table class="table-condensed">
+			<tr><td>Borough:</td>
+				<td> {{el.borough | boroFilter}}</td> </tr>
+			<tr><td>Elevator or escalator? </td>
+				<td> {{el.equipment | equipmentFilter}}</td> </tr>
+			<tr><td>Location of outage: </td>
+				<td> {{el.serving | lowercase}}</td> </tr>
+			<tr><td>Reason: </td>
+				<td> {{el.reason | lowercase}}</td> </tr>
+			<tr><td>Back in Service on: </td>
+				<td> {{el.estimatedreturntoservice}}</td> </tr>
+			<tr><td>Out of Service since: </td>
+				<td> {{el.outagedate}}</td></tr>
+		</table>
 	</ul>
 </div>
