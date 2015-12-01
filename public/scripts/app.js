@@ -52,6 +52,14 @@ app.filter('boroFilter', function() {
 })
 
 
+// app.filter('BoroughFilter', function(value){
+//   return element.name.match(/^M/) ? true : false;
+//   }
+// });
+
+//Split string based on / to grab individual trainline
+//var res = str.split("/");
+
 //ANGULAR ROUTES
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
