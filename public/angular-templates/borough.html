@@ -1,13 +1,25 @@
 <h2>Borough Time</h2>
 	<button ng-click="elevator.makeAPICall()">Click here</button>
-	<ul class="outage-box" ng-repeat="el in elevator.outage">
+
+<button value="Queens" ng-model="borough">
+<button value="Bronx" ng-model="borough">
+<button value="Manhattan" ng-model="borough">
+<button value="Brooklyn" ng-model="borough">
+
+
+
+<!-- 	<a href="#" ng-click="sortType = 'Bronx'">
+<a href="#" ng-click="sortType = 'Brooklyn'">
+<a href="#" ng-click="sortType = 'Manhattan'">
+ -->
+	<ul class="outage-box" ng-repeat="el in elevator.outage | filter:borough ">
 	
 		<div class="station">
 			<li class="station-name">{{el.station}}</li>
 			<li class="trainlisting">serving these trains: {{el.trainno}}</li>
 		</div>
 		<div class="box-bottom">
-			<li>Borough: {{el.borough | boroFilter}}</li>
+			<li>Borough: {{el.borough | boroFilter | BoroughFilter }}</li>
 			<li>Elevator or escalator? {{el.equipment | equipmentFilter}}</li>
 			<li>Location of outage: {{el.serving | lowercase}}</li>
 			<li>Reason: {{el.reason | lowercase}}</li>

@@ -1,6 +1,8 @@
-///ANGULAR - CONVERTS XML TO JSON USING XML2JSON plugin by Fyneworks///
+//ANGULAR TIME
 
 var app = angular.module('elevatorApp', ['ngRoute']);
+
+///ANGULAR - CONVERTS XML TO JSON USING XML2JSON plugin by Fyneworks///
 
 app.controller('ElevatorController', ['$http', '$scope', function($http, $scope){
  
@@ -11,7 +13,7 @@ app.controller('ElevatorController', ['$http', '$scope', function($http, $scope)
         controller.outage = json.outage; //will get outages as objects in an array
     }) 
    }; this.makeAPICall();
-   
+
 }])
 
 
