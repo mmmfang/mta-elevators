@@ -1,27 +1,21 @@
 <div class="centered">	
 	<h1>User Profile Page </h1>
+	<h4> You are logged in as: <%= user.email %> </h4>
+	<hr/>
 
-	ADD A PIC HERE MAYBE TO SPICE IT UP
+	<h4>USER PREFERENCES</h4>
 
-	<h2> You are logged in as: <%= user.email %> </h2>
-
-	<h3> User Preferences, if any</h3>
-
-	<h4>Do you want to receive notifications about outages?
-	<strong><%=user.notifications%> </strong> </h4>
-
-	<br/>
-	<br/>
+	<h4>Do you want to receive notifications about outages?  
+	<span class="user"><%=user.notifications%> </span> </h4>
+	
 
 	<h4>Which train line do you want to be notified about?
-	<strong><%=user.trainline%></strong> </h4>
+	<span class="user"><%=user.trainline%></span>  </h4>
 
 	<br/>
-	<br/>
 
-	<h4>Click submit to edit your profile. </h4>
+	<h4>To edit your profile, click submit </h4>
 
-	<br/>
 	<br/>
 	  
 	<form action="/users/<%= user._id %>/" method="post">

@@ -16,17 +16,6 @@ app.controller('ElevatorController', ['$http', '$scope', function($http, $scope)
    }; 
    this.makeAPICall();
 
-  // this.getQueens = function(value){
-  //     controller.makeAPICall();
-  // if (value.borough == "QNS") {
-  //   return "Queens";
-  // }    
-      // if outage.borough="QNS"
-
-   // }; 
-
-
-
 }])
 
 

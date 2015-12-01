@@ -1,10 +1,13 @@
-<div>
+<div class="centered">
     <h2>User Profile Page</h2>
 
-<h4>You are logged in as  <%= user.email %> </h4>
+    <h4>You are logged in as  <%= user.email%> </h4>
 
+    <hr/>
     <div>
-    <p>Do you wish to recieve notifications about elevator/escalator outages on your train line? Yes or No </p>
+    <h4>SET USER PREFERENCES</h4>
+    <br/>
+    <h4>Do you wish to recieve notifications about elevator/escalator outages on your train line?</h4>
     <form action="/users/<%= user._id%>/?_method=PATCH" method="post">
 
         <label for="yes">Yes</label>
@@ -15,7 +18,7 @@
         <br/>
         <br/>
 
-        <label>Add/Update which Train line you want to recieve notifications about</label>
+        <h4>Which train line do you want to recieve notifications about?</h4>
           <select name="user[trainline]" id="trainlineselect">
             <option value="1">1</option>
             <option value="2">2</option>
@@ -42,6 +45,8 @@
           </select>
 
           <br/>
+          <br/>
+
         <input type="submit">
 
     </form>
