@@ -85,3 +85,7 @@ span.user {
 	color: green;
 	font-size: 1.5em;
 }
+
+.pad-left {
+	padding-left: 15px;
+}
