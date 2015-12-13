@@ -43,25 +43,27 @@ app.controller('ElevatorController', ['$http', '$scope', function($http, $scope)
       controller.allData = data;
 
 
-
     $(data).find("outage").each(function(){
          var singleOutage = this;
          var trainLines= $(singleOutage).find("trainno").text(); 
 
          if (trainLines.length > 1) {
               var trainArray=trainLines.split("/");
+
               //console.log("multilines", trainLines);
               for (var i=0; i<trainArray.length; i++) {
-              //  console.log('tl split for this el', i ,trainArray[i]);
+              //console.log('tl split for this el', i ,trainArray[i]);
+              console.log('fulltrainarray', trainLines);
               }
          } else {
           console.log('single trainline is', trainLines)
          };
 
+         console.log('val is',inputtedTrain);
          
-        if ((trainArray || trainLines) == inputtedTrain) {
-          console.log('val is',inputtedTrain);
-         }
+        if ((trainLines) == inputtedTrain) {
+          
+   //      }
 
         //console.log($(xml).text()); // it gives me all info per outage
        //console.log($(this).find("station").text()); prints all stations
@@ -75,7 +77,8 @@ app.controller('ElevatorController', ['$http', '$scope', function($http, $scope)
       //   '</p><p class="whenOutageStarted">Out of service since: ' + $(singleOutage).find("outagedate").text() +
       //   '<hr />');
 //    })
-    }) //end of data.find
+    } 
+})//end of data.find
 })
 }
 
