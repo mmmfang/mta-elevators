@@ -2,11 +2,13 @@
 
 var app = angular.module('elevatorApp', ['ngRoute']);
 
-///ANGULAR - CONVERTS XML TO JSON USING XML2JSON plugin by Fyneworks///
 
 app.controller('ElevatorController', ['$http', '$scope', function($http, $scope){
  
  var controller=this;
+
+
+///ANGULAR - THIS API CALL USES JSON CONVERTED VIA XML2JSON plugin by Fyneworks///
 
   this.makeAPICall = function(){
     $.get('/feed', function(xml){ 
@@ -33,9 +35,9 @@ app.controller('ElevatorController', ['$http', '$scope', function($http, $scope)
   //   }) 
   //  }; 
 
+//TO GET OUTAGES BY TRAIN LINE - AM GETTING DIRECTLY FROM XML, NOT CONVERTING TO JSON FIRST
 
-  //to get train lines
-   this.getTrainLines = function(trainno){
+  this.getTrainLines = function(trainno){
     var inputtedTrain=trainno;
 
     var promise = $http.get('/feed');
@@ -54,30 +56,30 @@ app.controller('ElevatorController', ['$http', '$scope', function($http, $scope)
             console.log('fulltrainarray', trainLines);
           }
           // console.log('val is',inputtedTrain);
-     //console.log($(this).find("station").text()); prints all stations
+
         if (trainLines.includes(inputtedTrain)) {
-      $('#info-box').append('<p class="station">' + $(singleOutage).find("station").text() +
-      '</p><p class="whichTrain"> with the ' + $(singleOutage).find("trainno").text() +
-      ' trains</p><p class="boro">Borough: ' + $(singleOutage).find("borough").text() +
-      '</p><p class="whichExactly">Elevator or escalator?' + $(singleOutage).find("equipment").text() +
-      '</p><p class="why">Reason? ' + $(singleOutage).find("reason").text() +
-      '</p><p class="whenReturning">Estimated Return to Service on: ' + $(singleOutage).find("estimatedreturntoservice").text() + 
-      '</p><p class="whenOutageStarted">Out of service since: ' + $(singleOutage).find("outagedate").text() +
-      '<hr />');
+          $('#info-box').append('<li class="station-name">' + $(singleOutage).find("station").text() +
+          '</li><li class="trainlisting"> serving these trains: ' + $(singleOutage).find("trainno").text() +
+          '</li><li class="boro">Borough: ' + $(singleOutage).find("borough").text() +
+          '</li><li class="whichExactly">Elevator or escalator? ' + $(singleOutage).find("equipment").text() +
+          '</li><li class="why">Reason: ' + $(singleOutage).find("reason").text() +
+          '</li><li class="why">Reason: ' + $(singleOutage).find("reason").text() +
+          '</li><li class="whenReturning">Back in Service on: ' + $(singleOutage).find("estimatedreturntoservice").text() + 
+          '</li><li class="whenOutageStarted">Out of Service since: ' + $(singleOutage).find("outagedate").text() +
+          '<hr />');
         } else {
-          console.log('dont display if not correct trainline')
-        }
+          //console.log('not displaying since not correct trainline')
+        };
        
       } else {
         console.log('possible err,single trainline is', trainLines)
        };
 
+    })//end of data.find
+   })
+  }// closes getTrainLine()
 
-})//end of data.find
-})
-}
-
-}]);
+}]); //closes ElevatorController
 
 
 //ANGULAR CUSTOM FILTERS
