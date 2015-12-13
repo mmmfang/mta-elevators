@@ -53,6 +53,16 @@ li {
 	padding-right:10px;
 }
 
+
+.info-box {
+	display: inline-block;
+	border: 1px solid #E0E0E0 ; 
+	margin:2%;
+	text-align:left;
+	padding:0;
+	background-color: white;
+}
+
 button {
 	background-color: darkcyan;
 	color:white;

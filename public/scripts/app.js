@@ -44,40 +44,35 @@ app.controller('ElevatorController', ['$http', '$scope', function($http, $scope)
 
 
     $(data).find("outage").each(function(){
-         var singleOutage = this;
-         var trainLines= $(singleOutage).find("trainno").text(); 
+      var singleOutage = this;
+      var trainLines= $(singleOutage).find("trainno").text(); 
 
-         if (trainLines.length > 1) {
-              var trainArray=trainLines.split("/");
+       if (trainLines.length >= 1) {
+          var trainArray=trainLines.split("/");
+          for (var i=0; i<trainArray.length; i++) {
+          //console.log('tl split for this el', i ,trainArray[i]);
+            console.log('fulltrainarray', trainLines);
+          }
+          // console.log('val is',inputtedTrain);
+     //console.log($(this).find("station").text()); prints all stations
+        if (trainLines.includes(inputtedTrain)) {
+      $('#info-box').append('<p class="station">' + $(singleOutage).find("station").text() +
+      '</p><p class="whichTrain"> with the ' + $(singleOutage).find("trainno").text() +
+      ' trains</p><p class="boro">Borough: ' + $(singleOutage).find("borough").text() +
+      '</p><p class="whichExactly">Elevator or escalator?' + $(singleOutage).find("equipment").text() +
+      '</p><p class="why">Reason? ' + $(singleOutage).find("reason").text() +
+      '</p><p class="whenReturning">Estimated Return to Service on: ' + $(singleOutage).find("estimatedreturntoservice").text() + 
+      '</p><p class="whenOutageStarted">Out of service since: ' + $(singleOutage).find("outagedate").text() +
+      '<hr />');
+        } else {
+          console.log('dont display if not correct trainline')
+        }
+       
+      } else {
+        console.log('possible err,single trainline is', trainLines)
+       };
 
-              //console.log("multilines", trainLines);
-              for (var i=0; i<trainArray.length; i++) {
-              //console.log('tl split for this el', i ,trainArray[i]);
-              console.log('fulltrainarray', trainLines);
-              }
-         } else {
-          console.log('single trainline is', trainLines)
-         };
 
-         console.log('val is',inputtedTrain);
-         
-        if ((trainLines) == inputtedTrain) {
-          
-   //      }
-
-        //console.log($(xml).text()); // it gives me all info per outage
-       //console.log($(this).find("station").text()); prints all stations
-
-      // $('#info-box').append('<p class="station">' + $(singleOutage).find("station").text() +
-      //   '</p><p class="whichTrain"> with the ' + $(singleOutage).find("trainno").text() +
-      //   ' trains</p><p class="boro">Borough: ' + $(singleOutage).find("borough").text() +
-      //   '</p><p class="whichExactly">Elevator or escalator?' + $(singleOutage).find("equipment").text() +
-      //   '</p><p class="why">Reason? ' + $(singleOutage).find("reason").text() +
-      //   '</p><p class="whenReturning">Estimated Return to Service on: ' + $(singleOutage).find("estimatedreturntoservice").text() + 
-      //   '</p><p class="whenOutageStarted">Out of service since: ' + $(singleOutage).find("outagedate").text() +
-      //   '<hr />');
-//    })
-    } 
 })//end of data.find
 })
 }
