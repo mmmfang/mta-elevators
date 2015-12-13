@@ -33,14 +33,16 @@ app.controller('ElevatorController', ['$http', '$scope', function($http, $scope)
   //   }) 
   //  }; 
 
-  // $scope.submitWhichTrain = function() {
-  //   trainline = $scope.searchLine;
 
   //to get train lines
-   this.getTrainLines = function(){
+   this.getTrainLines = function(trainno){
+    var inputtedTrain=trainno;
+
     var promise = $http.get('/feed');
     promise.success(function(data){
       controller.allData = data;
+
+
 
     $(data).find("outage").each(function(){
          var singleOutage = this;
@@ -50,10 +52,15 @@ app.controller('ElevatorController', ['$http', '$scope', function($http, $scope)
               var trainArray=trainLines.split("/");
               //console.log("multilines", trainLines);
               for (var i=0; i<trainArray.length; i++) {
-                console.log('tl split for this el', i ,trainArray[i]);
+              //  console.log('tl split for this el', i ,trainArray[i]);
               }
          } else {
           console.log('single trainline is', trainLines)
+         };
+
+         
+        if ((trainArray || trainLines) == inputtedTrain) {
+          console.log('val is',inputtedTrain);
          }
 
         //console.log($(xml).text()); // it gives me all info per outage
@@ -68,7 +75,7 @@ app.controller('ElevatorController', ['$http', '$scope', function($http, $scope)
       //   '</p><p class="whenOutageStarted">Out of service since: ' + $(singleOutage).find("outagedate").text() +
       //   '<hr />');
 //    })
-  })
+    }) //end of data.find
 })
 }
 
