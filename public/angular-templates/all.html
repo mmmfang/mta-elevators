@@ -1,9 +1,10 @@
 <div class="pad-left">
 
-<h2>All Outage Time	</h2>
+<h2>All Equipment Outages</h2>
 <button ng-click="elevator.makeAPICall()">Click here</button>
+<br/>
 
-	<ul class="outage-box" ng-repeat="el in elevator.outage | filter:searchel">
+	<ul class="outage-box" ng-repeat="el in elevator.outage">
 		<div class="station">
 			<li class="station-name">{{el.station}}</li>
 			<li class="trainlisting">serving these trains: {{el.trainno}}</li>

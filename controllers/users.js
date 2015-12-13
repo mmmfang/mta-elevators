@@ -43,7 +43,6 @@ router.post('/new', function (req, res) {
 //login
 router.post('/login', function (req, res) {
      var attempt = req.body.user;
-     console.log("attempt is ", attempt);
 
   User.findOne({ email: attempt.email }, function (err, user) {
     if (err) {
@@ -90,7 +89,7 @@ router.get('/:id/', function(req, res) {
 });
 
 
-//To edit - let's see maybe you will work
+//
 router.post('/:_id/', function(req,res){
  User.findOne({_id: req.session.currentUser._id}, function(err,currentUser){
      if (err) { 
@@ -128,7 +127,7 @@ router.get('/:id/edit', function(req, res) {
 });
 
 
-//UPDATE POST (PATCH Part) - at long last, you work. Thank you 30 year old Jesus
+//UPDATE USER PREFERENCES USING PATCH 
 
 router.patch('/:id', function(req, res) {
   var userOptions = req.body.user;

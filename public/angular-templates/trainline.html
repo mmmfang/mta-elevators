@@ -1,26 +1,74 @@
 <div class="bg-white pad-left">
 
-<img src="images/1.gif" alt="1">
-<img src="images/2.gif" alt="1">
-<img src="images/3.gif" alt="1">
-<img src="images/4.jpg" alt="1">
-<img src="images/5.jpg" alt="1">
-<img src="images/6.jpg" alt="1">
-<img src="images/7.jpg" alt="1">
-<img src="images/A.jpg" alt="1">
-<img src="images/B.jpg" alt="1">
-<img src="images/C.jpg" alt="1">
-<img src="images/D.jpg" alt="1">
-<img src="images/E.jpg" alt="1">
-<img src="images/F.jpg" alt="1">
-<img src="images/G.jpg" alt="1">
-<img src="images/J.jpg" alt="1">
-<img src="images/L.jpg" alt="1">
-<img src="images/M.jpg" alt="1">
-<img src="images/N.jpg" alt="1">
-<img src="images/Q.jpg" alt="1">
-<img src="images/R.jpg" alt="1">
-<img src="images/S.jpg" alt="1">
-<img src="images/Z.jpg" alt="1">
+
+<h4>Search by Train Line: </h4>
+
+<!-- <input type="text" ng-model="searchLine" maxlength="1"> -->
+
+<!-- 	<form ng-submit="getTrainLines()">		
+		<input type="text" ng-model="searchLine" maxlength="1"/>
+		<input type="submit" value="Submit"/>
+	</form> -->
+
+<br/>
+
+<ul class="outage-box" ng-repeat="el in elevator.outage  | filter:searchLine">
+ 
+		<div class="station">
+			<li class="station-name">{{el.station}}</li>
+			<li class="trainlisting">serving these trains: {{el.trainno}}</li>
+		</div>
+		<table class="table-condensed">
+			<tr><td>Borough:</td>
+				<td> {{el.borough | boroFilter}}</td> </tr>
+			<tr><td>Elevator or escalator? </td>
+				<td> {{el.equipment | equipmentFilter}}</td> </tr>
+			<tr><td>Location of outage: </td>
+				<td> {{el.serving | lowercase}}</td> </tr>
+			<tr><td>Reason: </td>
+				<td> {{el.reason | lowercase}}</td> </tr>
+			<tr><td>Back in Service on: </td>
+				<td> {{el.estimatedreturntoservice}}</td> </tr>
+			<tr><td>Out of Service since: </td>
+				<td> {{el.outagedate}}</td></tr>
+		</table>
+
+ </ul>	
+</div>
+
+
+<!-- <div class="outage-box" ng-repeat="el in elevator.outage">
+
+<div ng-show="{{el.outage.borough===BKN}}">BK OUTAGES {{el.station}}</span>
+ -->
+<!-- <div class="station">
+			<li class="station-name">{{el.station}}</li>
+			<li class="trainlisting">serving these trains: {{el.trainno}}</li>
+			<li>Borough: {{el.borough | boroFilter}}</li>
+		</div>
+ -->
+
+<img src="images/1.gif" alt="1" ng-click="elevator.getTrainLines()" value="1">
+<img src="images/2.gif" alt="2" ng-click="elevator.getTrainLines()" value="2">
+<img src="images/3.gif" alt="3" ng-click="elevator.getTrainLines()" value="3">
+<img src="images/4.jpg" alt="4" ng-click="elevator.getTrainLines()" value="4">
+<img src="images/5.jpg" alt="5" ng-click="elevator.getTrainLines()" value="5">
+<img src="images/6.jpg" alt="6" ng-click="elevator.getTrainLines()" value="6">
+<img src="images/7.jpg" alt="7" ng-click="elevator.getTrainLines()" value="7">
+<img src="images/A.jpg" alt="A" ng-click="elevator.getTrainLines()" value="A">
+<img src="images/B.jpg" alt="B" ng-click="elevator.getTrainLines()" value="B">
+<img src="images/C.jpg" alt="C" ng-click="elevator.getTrainLines()" value="C">
+<img src="images/D.jpg" alt="D" ng-click="elevator.getTrainLines()" value="D">
+<img src="images/E.jpg" alt="E" ng-click="elevator.getTrainLines()" value="E">
+<img src="images/F.jpg" alt="F" ng-click="elevator.getTrainLines()" value="F">
+<img src="images/G.jpg" alt="G" ng-click="elevator.getTrainLines()" value="G">
+<img src="images/J.jpg" alt="J" ng-click="elevator.getTrainLines()" value="J">
+<img src="images/L.jpg" alt="L" ng-click="elevator.getTrainLines()" value="L">
+<img src="images/M.jpg" alt="M" ng-click="elevator.getTrainLines()" value="M">
+<img src="images/N.jpg" alt="N" ng-click="elevator.getTrainLines()" value="N">
+<img src="images/Q.jpg" alt="Q" ng-click="elevator.getTrainLines()" value="Q">
+<img src="images/R.jpg" alt="R" ng-click="elevator.getTrainLines()" value="R">
+<img src="images/S.jpg" alt="S" ng-click="elevator.getTrainLines()" value="S">
+<img src="images/Z.jpg" alt="Z" ng-click="elevator.getTrainLines()" value="Z">
 
 </div>
