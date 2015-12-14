@@ -63,6 +63,19 @@ li {
 	background-color: white;
 }
 
+.station-tl{
+/*	background-color: #404040;*/
+	background-color:black;
+	color: white;
+	font-family: 'Lato', sans-serif;
+	border: 1px solid black;
+	text-align: center;
+	width:100%;
+	padding-left:0;
+	padding-right:0;
+	font-size: 1.2em;
+}
+
 button {
 	background-color: darkcyan;
 	color:white;

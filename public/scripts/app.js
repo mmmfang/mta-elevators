@@ -35,7 +35,7 @@ app.controller('ElevatorController', ['$http', '$scope', function($http, $scope)
   //   }) 
   //  }; 
 
-//TO GET OUTAGES BY TRAIN LINE - AM GETTING DIRECTLY FROM XML, NOT CONVERTING TO JSON FIRST
+//TO GET OUTAGES BY TRAIN LINE - AM GETTING XML DATA, NOT CONVERTING TO JSON FIRST
 
   this.getTrainLines = function(trainno){
     var inputtedTrain=trainno;
@@ -44,7 +44,6 @@ app.controller('ElevatorController', ['$http', '$scope', function($http, $scope)
     promise.success(function(data){
       controller.allData = data;
 
-
     $(data).find("outage").each(function(){
       var singleOutage = this;
       var trainLines= $(singleOutage).find("trainno").text(); 
@@ -52,13 +51,13 @@ app.controller('ElevatorController', ['$http', '$scope', function($http, $scope)
        if (trainLines.length >= 1) {
           var trainArray=trainLines.split("/");
           for (var i=0; i<trainArray.length; i++) {
-          //console.log('tl split for this el', i ,trainArray[i]);
+            //console.log('tl split for this el', i ,trainArray[i]);
             console.log('fulltrainarray', trainLines);
-          }
-          // console.log('val is',inputtedTrain);
+          } 
+
 
         if (trainLines.includes(inputtedTrain)) {
-          $('#info-box').append('<li class="station-name">' + $(singleOutage).find("station").text() +
+          $('#info-box').append('<li class="station">' + $(singleOutage).find("station").text() +
           '</li><li class="trainlisting"> serving these trains: ' + $(singleOutage).find("trainno").text() +
           '</li><li class="boro">Borough: ' + $(singleOutage).find("borough").text() +
           '</li><li class="whichExactly">Elevator or escalator? ' + $(singleOutage).find("equipment").text() +
