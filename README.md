@@ -12,3 +12,5 @@ Received a developer key from the MTA but didn't use since that is necessary for
 MTA feed is returned in XML, not JSON. Learned a lot here... out of necessity! Took me a long time to figure out a way to overcome the Cross Origin Request Error (CORS). Matt Huntington explained I should make a server-side call to the MTA XML feed via my server, and then send that info to a route on my site, and then make an AJAX request to my own site. This took a while for me to figure out! I wanted my code to be more Angular and less jQuery so I first Angularized it by using a $http request instead of a $.get. Then I used a plugin to convert XML to JSON, which Angular works well with.There was definitely a learning curve, but glad I was able to get a deep understanding of Node, CORS and XML through all my time trying to udnerstand this!
 
 Used bcrypt to hash my passwords, for the first time in a MEAN app.
+
+Filtered appearance of words using Angular custom filters and regular JS functions

@@ -35,7 +35,7 @@ app.controller('ElevatorController', ['$http', '$scope', function($http, $scope)
   //   }) 
   //  }; 
 
-//TO GET OUTAGES BY TRAIN LINE - AM GETTING XML DATA, NOT CONVERTING TO JSON FIRST
+//TO GET OUTAGES BY TRAIN LINE - USING THE XML DATA
 
   this.getTrainLines = function(trainno){
     var inputtedTrain=trainno;

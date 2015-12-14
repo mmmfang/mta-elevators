@@ -39,15 +39,19 @@
   </div><!-- /.container-fluid -->
 </nav>
  
-<div class="pad-left">
-<h2>Elevator and Escalator Outages Across the NYC Subway System</h2>
-
-
-<a href='/all'>Full List</a> | 
-<a href='/borough'>Search by Borough</a> |
-<a href='/trainline'>Search by Train Line</a>
-
+<div class="intro-area centered">
+  <h1>Elevator/Escalator Outages</h1><h1>Across the NYC Subway System</h1>
 </div>
+
+<br/>
+<div class="container-fluid"></div>
+<div class="row pad-left pad-right">
+  <div class="col-sm-4"><button class="search"><a class="searchlink" href="/all">Full List of Outages</a></button></div> 
+  <div class="col-sm-4"><button class="search"><a class="searchlink" href="/borough">Search by Borough</a></button></div> 
+  <div class="col-sm-4"><button class="search"><a class="searchlink" href="/trainline">Search by Train Line</a></button></div>
+</div> 
+</div>
+
 
 <div ng-controller="ElevatorController as elevator">
 

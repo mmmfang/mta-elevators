@@ -86,6 +86,25 @@ a {
 	font-size: 1.2em;
 }
 
+button.search {
+	background-color: #FF6633;
+	color:white;
+	padding:1%;
+	margin:2px;
+	width:100%;
+
+}
+
+a.searchlink {
+	text-decoration: none;
+	color: white;
+/*	font-size: 2vw;*/
+}
+
+/*.linksbar {
+	width:100%;
+}
+*/
 .bg-white {
 	background-color: white;
 }
@@ -115,4 +134,8 @@ span.user {
 
 .pad-left {
 	padding-left: 15px;
+}
+
+.pad-right {
+	padding-right:15px;
 }
