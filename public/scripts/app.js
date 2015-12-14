@@ -55,6 +55,11 @@ app.controller('ElevatorController', ['$http', '$scope', function($http, $scope)
             console.log('fulltrainarray', trainLines);
           } 
 
+          var checkEquip = $(singleOutage).find("equipment").text()
+          var whichEquipment = elOrEsc(checkEquip);
+
+          var findBoro = $(singleOutage).find("borough").text()
+          var whichBoro =  filterBoro(findBoro);
 
          if (trainLines.includes(inputtedTrain)) {
 
@@ -64,11 +69,11 @@ app.controller('ElevatorController', ['$http', '$scope', function($http, $scope)
           '</li><li> serving these trains: ' + 
           $(singleOutage).find("trainno").text() +
 
-          '</li></div><table class="table-condensed"><tr><td>Borough: </td><td>' + 
-          $(singleOutage).find("borough").text() +
+          '</li></div><table class="table-condensed"><tr><td>Borough: </td><td>'  
+          + whichBoro +
 
           '</td></tr><tr><td>Elevator or escalator? </td><td>' 
-          + $(singleOutage).find("equipment").text() +
+          + whichEquipment +
 
           '</td></tr><tr><td>Location of outage: </td><td>' + 
           $(singleOutage).find("serving").text().toLowerCase() + 
@@ -89,10 +94,41 @@ app.controller('ElevatorController', ['$http', '$scope', function($http, $scope)
        
       } else {
         console.log('possible err,single trainline is', trainLines)
-       };
+      };
+
+      });
+
+      function elOrEsc(word){
+        var charZero = word.charAt(0);
+        var charOne = word.charAt(1);
+
+        if (charZero=='E' && charOne=='L') {
+          return "Elevator";
+        } else {
+          return "Escalator";
+        }
+      };
+
+
+      function filterBoro(word) {
+        var charCero = word.charAt(0);
+        var charUno = word.charAt(1);
+
+        if (charCero=='M' && charUno=='N') {
+          return "Manhattan";
+        } else if (charCero=='Q' && charUno=='N') {
+          return "Queens";
+        } else if (charCero=='B' && charUno=='K') {
+          return "Brooklyn"
+        } else if (charCero=='B' && charUno=='X') {
+          return "Bronx"
+        } else {
+          return "N/A"
+        }
+     };
 
     })//end of data.find
-   })
+  
   }// closes getTrainLine()
 
 }]); //closes ElevatorController
