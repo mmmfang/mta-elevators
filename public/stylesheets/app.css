@@ -2,6 +2,8 @@ h1, h2 {
 	font-family: 'Montserrat', sans-serif;
 }
 
+
+
 .centered {
 	text-align: center;
 }
@@ -12,6 +14,10 @@ body {
 
 li {
 	list-style: none;
+}
+
+.intro-area {
+ line-height: .7;
 }
 
 .about li {
