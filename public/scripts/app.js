@@ -56,16 +56,33 @@ app.controller('ElevatorController', ['$http', '$scope', function($http, $scope)
           } 
 
 
-        if (trainLines.includes(inputtedTrain)) {
-          $('#info-box').append('<li class="station">' + $(singleOutage).find("station").text() +
-          '</li><li class="trainlisting"> serving these trains: ' + $(singleOutage).find("trainno").text() +
-          '</li><li class="boro">Borough: ' + $(singleOutage).find("borough").text() +
-          '</li><li class="whichExactly">Elevator or escalator? ' + $(singleOutage).find("equipment").text() +
-          '</li><li class="why">Reason: ' + $(singleOutage).find("reason").text() +
-          '</li><li class="why">Reason: ' + $(singleOutage).find("reason").text() +
-          '</li><li class="whenReturning">Back in Service on: ' + $(singleOutage).find("estimatedreturntoservice").text() + 
-          '</li><li class="whenOutageStarted">Out of Service since: ' + $(singleOutage).find("outagedate").text() +
-          '<hr />');
+         if (trainLines.includes(inputtedTrain)) {
+
+          $('#info-box').append('<div class="station"><li>' + 
+          $(singleOutage).find("station").text() +
+          
+          '</li><li> serving these trains: ' + 
+          $(singleOutage).find("trainno").text() +
+
+          '</li></div><table class="table-condensed"><tr><td>Borough: </td><td>' + 
+          $(singleOutage).find("borough").text() +
+
+          '</td></tr><tr><td>Elevator or escalator? </td><td>' 
+          + $(singleOutage).find("equipment").text() +
+
+          '</td></tr><tr><td>Location of outage: </td><td>' + 
+          $(singleOutage).find("serving").text().toLowerCase() + 
+
+          '</td></tr><tr><td>Reason: </td><td>' + 
+          $(singleOutage).find("reason").text().toLowerCase() + 
+
+          '</td></tr><tr><td>Back in Service on: </td><td>' + 
+          $(singleOutage).find("estimatedreturntoservice").text() + 
+          
+          '</td></tr><tr><td>Out of Service since: </td><td>' + 
+          $(singleOutage).find("outagedate").text() +
+          '</td></tr></table>');
+
         } else {
           //console.log('not displaying since not correct trainline')
         };
