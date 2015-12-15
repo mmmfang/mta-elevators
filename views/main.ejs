@@ -2,7 +2,18 @@
 	<h1>MTA Elevator and Escalator Outages</h1>
 	<h4>also known as...</h4>
 	<h2>Do I have to take the stairs??!?@#?</h2>
+	<br/>
+</div>
 
+<div ng-controller="ElevatorController as elevator" class="centered">
+
+	<a class="biggestbutton" href="/index"><button class="biggestbutton active">SEARCH ALL OUTAGES</button></a>
+
+	<br/>
+
+</div>
+
+<div class="centered">
 	<hr>
 	<div ng-hide="loginButton" class="signup half">
 	  <h4>Sign up to receive alerts and to view your preferences.</h4>
@@ -35,7 +46,7 @@
      <p class = "alert alert-danger"><%=flash.emailPasswordMismatch%></p>
      <%} %>
 
-	<a ng-click="loginButton=!loginButton"> Login to your existing account</a>
+	<a class="login" ng-click="loginButton=!loginButton"> Login to your existing account</a>
 
       <div ng-show="loginButton">
 
@@ -52,10 +63,10 @@
 	        	<input type="submit" value="Login">
 	    </form>
 	   </div>
+	</div>
 </div>
-
 <hr>
-<div ng-controller="ElevatorController as elevator" class="centered">
+<!-- <div ng-controller="ElevatorController as elevator" class="centered">
 	<button class="active" ng-click="elevator.makeAPICall()">Click for full list of equipment outages </button>
 	<br/>
 	<br/>
@@ -83,3 +94,4 @@
 		</table>
 	</ul>
 </div>
+ -->

@@ -1,16 +1,22 @@
 <div class="pad-left">
 
-<h2>Search by Borough or Train Station</h2>
+
 <!-- <button ng-click="elevator.getQueens()">Queens</button>
 <button ng-click="elevator.makeAPICall()">Bronx</button>
 <button ng-click="elevator.makeAPICall()">Manhattan</button>
 <button ng-click="elevator.makeAPICall()">Brooklyn</button>
  -->
+<div class="centered">
+<h3>Search by BOROUGH: 
+enter QNS, BK, BX, MN </h3>
 
-<h4>Search by borough: 
-enter QNS, BK, BX, MN </h4>
+<h3><a id="tooltip-id" href="#" data-toggle="tooltip" title="If the station does not show up, there is no elevator or escalator outage! Or you may have typed the station name incorrectly.">Search by STATION: Type your station below</a></h3>
 
-<h4>Search by station: Type your station below</h4>
+<div class="tooltip top" role="tooltip">
+  <div class="tooltip-arrow"></div>
+  <div class="tooltip-inner"> 
+  </div>
+</div>
 
 <br/>
 
@@ -19,6 +25,7 @@ enter QNS, BK, BX, MN </h4>
 </div>
  
 <br/>
+
 
 	<ul class="outage-box" ng-repeat="el in elevator.outage | filter:searchel">
 		<div class="station">
@@ -40,3 +47,7 @@ enter QNS, BK, BX, MN </h4>
 				<td> {{el.outagedate}}</td></tr>
 		</table>
 	</ul>
+
+	</div>
+
+	<script> </script>

@@ -178,7 +178,11 @@ app.filter('bxFilter', function(){
  }         
 });
 
+// $(function () {
+//   $('[data-toggle="tooltip"]').tooltip()
+// })
 
+$('#tooltip-title').tooltip('hover');
 // var test = "test string",
 //     characters = test.split('');
 // and then loop using regular Javascript, or else you can iterate over the string's characters using jQuery by
