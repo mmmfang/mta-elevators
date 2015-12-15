@@ -182,16 +182,9 @@ app.filter('bxFilter', function(){
 //   $('[data-toggle="tooltip"]').tooltip()
 // })
 
+//TOOLTIP FOR THE BOROUGH PAGE
 $('#tooltip-title').tooltip('hover');
-// var test = "test string",
-//     characters = test.split('');
-// and then loop using regular Javascript, or else you can iterate over the string's characters using jQuery by
 
-// var test = "test string";
-
-// $(test.split('')).each(function (index,character) {
-//     alert(character);
-// });
 
 
 // app.filter('BoroughFilter', function(value){
@@ -199,8 +192,7 @@ $('#tooltip-title').tooltip('hover');
 //   }
 // });
 
-//Split string based on / to grab individual trainline
-//var res = str.split("/");
+
 
 //ANGULAR ROUTES
 

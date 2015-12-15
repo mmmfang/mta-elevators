@@ -105,6 +105,17 @@ a {
 	font-size: 1.2em;
 }
 
+button.allbutton {
+	background-color: #194A98;
+	color:white;
+	padding:1%;
+	margin:2px;
+	width:50%;
+	font-size: 1.3em;
+}
+
+
+
 button.search {
 	background-color: #FF6633;
 	color:white;

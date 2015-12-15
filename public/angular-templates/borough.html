@@ -1,23 +1,23 @@
 <div class="pad-left">
 
-
 <!-- <button ng-click="elevator.getQueens()">Queens</button>
 <button ng-click="elevator.makeAPICall()">Bronx</button>
 <button ng-click="elevator.makeAPICall()">Manhattan</button>
 <button ng-click="elevator.makeAPICall()">Brooklyn</button>
  -->
+ <br/>
 <div class="centered">
-<h3>Search by BOROUGH: 
-enter QNS, BK, BX, MN </h3>
+	<h3>Search by BOROUGH: enter QNS, BK, BX, MN </h3>
 
-<h3><a id="tooltip-id" href="#" data-toggle="tooltip" title="If the station does not show up, there is no elevator or escalator outage! Or you may have typed the station name incorrectly.">Search by STATION: Type your station below</a></h3>
+<!-- Tooltip Code	 -->
+	<h3><a id="tooltip-id" href="#" data-toggle="tooltip" title="If typed station name does not show up, there is no elevator or escalator outage! Or you can try typing the name again.">Search by STATION: Type your station below</a></h3>
 
-<div class="tooltip top" role="tooltip">
-  <div class="tooltip-arrow"></div>
-  <div class="tooltip-inner"> 
-  </div>
-</div>
-
+	<div class="tooltip top" role="tooltip">
+	  <div class="tooltip-arrow"></div>
+	  <div class="tooltip-inner"> 
+	  </div>
+	</div>
+	<!-- End of Tooltip Code	 -->
 <br/>
 
 <input type="text" ng-model="searchel">
@@ -49,5 +49,3 @@ enter QNS, BK, BX, MN </h3>
 	</ul>
 
 	</div>
-
-	<script> </script>
