@@ -1,9 +1,13 @@
+<div id="bg-image">
+
 <div class="centered">
 	<h1>MTA Elevator and Escalator Outages</h1>
 	<h4>also known as...</h4>
 	<h2>Do I have to take the stairs??!?@#?</h2>
 
 	<hr>
+
+
 	<div ng-hide="loginButton" class="signup half">
 	  <h4>Sign up to receive alerts and to view your preferences.</h4>
 	  
@@ -56,10 +60,8 @@
 
 <hr>
 <div ng-controller="ElevatorController as elevator" class="centered">
-	<button class="active" ng-click="elevator.makeAPICall()">Click for full list of equipment outages </button>
-	<br/>
-	<br/>
-	<a href="/index">For more search options without logging in, click through</a>
+
+	<a class="biggestbutton" href="/index"><button class="biggestbutton active">Click here to search by outages</button></a>
 
 	<br/>
 	<ul class="outage-box" ng-repeat="el in elevator.outage | filter:searchel">
@@ -82,4 +84,6 @@
 				<td> {{el.outagedate}}</td></tr>
 		</table>
 	</ul>
+</div>
+
 </div>

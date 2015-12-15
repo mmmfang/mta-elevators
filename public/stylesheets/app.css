@@ -2,8 +2,6 @@ h1, h2 {
 	font-family: 'Montserrat', sans-serif;
 }
 
-
-
 .centered {
 	text-align: center;
 }
@@ -16,10 +14,21 @@ li {
 	list-style: none;
 }
 
+#bg-image {
+	background-image: url('/images/escalator_photo_by_barn_images.jpg');
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+/**************About Page Styling****************/
 
 .about li {
 	list-style-type: square;
 }
+
+/**************Outage Box Styling****************/
 
 .outage-box {
 	display: inline-block;
@@ -66,7 +75,6 @@ li {
 	background-color: yellow;
 }
 
-
 .station-tl{
 	background-color:black;
 	color: white;
@@ -79,12 +87,22 @@ li {
 	font-size: 1.2em;
 }
 
+
 button {
 	background-color: darkcyan;
 	color:white;
 	font-family: 'Montserrat', sans-serif;
 }
 
+a.biggestbutton {
+	font-size: 2rem;
+}
+
+button.biggestbutton {
+	background-color: grey;
+	color:white;
+	font-family: 'Montserrat', sans-serif;
+}
 a {
 	font-size: 1.2em;
 }
