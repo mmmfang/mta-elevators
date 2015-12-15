@@ -14,6 +14,8 @@ var express 		= require ('express'),
 	Schema 			= mongoose.Schema;
 	bcrypt 			= require('bcryptjs');
 
+var nodemailer = require("nodemailer");
+
 function ensureAuthenticated(req,res,next) {
 	if (req.session.username) {
 		next()
@@ -46,6 +48,15 @@ server.set('view engine', 'ejs');
 //Grabbing external MTA XML feed
 server.use('/feed', function(req, res) {  
   req.pipe(request('http://web.mta.info/developers/data/nyct/nyct_ene.xml')).pipe(res);
+});
+
+//setting up nodemailer time
+var smtpTransport = nodemailer.createTransport("SMTP",{
+    service: "Gmail",
+    auth: {
+        user: "webdevprojmailer@gmail.com",
+        pass: "potato11"
+    }
 });
 
 //routes to Controllers

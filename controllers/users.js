@@ -110,6 +110,7 @@ router.post('/:_id/', function(req,res){
  })
 });
 
+//GETTING USER PAGE SO YOU CAN SET PREFERENCES
 
 router.get('/:id/edit', function(req, res) {
   console.log("req params is", req.params);
@@ -121,9 +122,21 @@ router.get('/:id/edit', function(req, res) {
     } else {
       res.render('users/edit', {
         user: currentUser
-      });
+      }); 
+      var wantNotifications = currentUser.notifications;
+      console.log("wantnofiications is", wantNotifications);
+
+      if (wantNotifications =true) {
+        var whichTrainLine = currentUser.trainline;
+        console.log("whichTrainline", whichTrainLine); 
+      }
     }
-  }) 
+  });
+
+
+/////////TESTING TESTING TESTING Nodemailer setup//////
+
+
 });
 
 
@@ -140,6 +153,8 @@ router.patch('/:id', function(req, res) {
     }
   })
 }); 
+
+
 
 // //SHOW ALL USERS - not applicable
 
