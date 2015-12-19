@@ -1,23 +1,16 @@
 <div class="pad-left">
 <br/>
 
-<button ng-click="boroughValue=QNS">Queens</button>
-<button ng-click="boroughValue=BX">Bronx</button>
-<button ng-click="boroughValue=MN">Manhattan</button>
-<button ng-click="boroughValue=BKN">Brooklyn</button>
+<button ng-click="boroughValue='QNS'">Queens</button>
+<button ng-click="boroughValue='BX'">Bronx</button>
+<button ng-click="boroughValue='MN'">Manhattan</button>
+<button ng-click="boroughValue='BKN'">Brooklyn</button>
 
  <br/>
-<div class="centered">
-
-	<h3>Search by BOROUGH: enter QNS, BK, BX, MN </h3>
 
 <br/>
 
-</div>
- 
-<br/>
-
-	<ul class="outage-box" ng-repeat="outage in borough.allOutages" ng-show="outage.borough==boroughValue">
+	<ul class="outage-box" ng-repeat="outage in borough.allOutages" ng-show="outage.borough===boroughValue">
 		<div class="station">
 			<li class="station-name">{{outage.station}}</li>
 			<li class="trainlisting">serving these trains: {{outage.trainno}}</li>
