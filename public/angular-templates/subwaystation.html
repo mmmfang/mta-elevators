@@ -1,0 +1,44 @@
+<div class="pad-left">
+
+<div class="centered">
+
+<!-- Tooltip Code	 -->
+	<h3><a id="tooltip-id" href="#" data-toggle="tooltip" title="If typed station name does not show up, there is no elevator or escalator outage! Or you can try typing the name again.">Search by STATION: Type your station below</a></h3>
+
+	<div class="tooltip top" role="tooltip">
+	  <div class="tooltip-arrow"></div>
+	  <div class="tooltip-inner"> 
+	  </div>
+	</div>
+	<!-- End of Tooltip Code	 -->
+<br/>
+
+<input type="text" ng-model="searchel">
+
+</div>
+ 
+<br/>
+
+	<ul class="outage-box" ng-repeat="el in elevator.outage | filter:searchel">
+		<div class="station">
+			<li class="station-name">{{el.station}}</li>
+			<li class="trainlisting">serving these trains: {{el.trainno}}</li>
+		</div>
+		<table class="table-condensed">
+			<tr><td>Borough:</td>
+				<td> {{el.borough | boroFilter}}</td> </tr>
+			<tr><td>Elevator or escalator? </td>
+				<td> {{el.equipment | equipmentFilter}}</td> </tr>
+			<tr><td>Location of outage: </td>
+				<td> {{el.serving | lowercase}}</td> </tr>
+			<tr><td>Reason: </td>
+				<td> {{el.reason | lowercase}}</td> </tr>
+			<tr><td>Back in Service on: </td>
+				<td> {{el.estimatedreturntoservice}}</td> </tr>
+			<tr><td>Out of Service since: </td>
+				<td> {{el.outagedate}}</td></tr>
+		</table>
+	</ul>
+</div>
+
+</div>

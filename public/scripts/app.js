@@ -133,6 +133,18 @@ app.controller('ElevatorController', ['$http', '$scope', function($http, $scope)
 
 }]); //closes ElevatorController
 
+app.controller("BoroughController", function(){
+  this.boroughValue = '';
+  var controller=this;
+  this.makeAPICall = function(){
+    $.get('/feed', function(xml){ 
+        var json = $.xml2json(xml); //json will get all the json
+        controller.allOutages = json.outage; //will get outages as objects in an array
+    })  
+   }; 
+  this.makeAPICall();
+})
+
 
 //ANGULAR CUSTOM FILTERS
 
@@ -210,8 +222,12 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         controllerAs: 'elevator'
     }).when('/borough',
     { templateUrl: 'angular-templates/borough.html',
+        controller:  'BoroughController',
+        controllerAs: 'borough'
+    }).when('/station',
+      { templateUrl: 'angular-templates/subwaystation.html',
         controller:  'ElevatorController',
-        controllerAs: 'elevator'
+        controllerAs: 'elevator'        
     }).when('/trainline',
       { templateUrl: 'angular-templates/trainline.html',
         controller:  'ElevatorController',

@@ -1,0 +1,9 @@
+{"v":0,"level":30,"name":"newrelic","hostname":"Maes-MacBook-Pro.local","pid":4183,"time":"2015-12-19T03:58:51.245Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"Maes-MacBook-Pro.local","pid":4183,"time":"2015-12-19T03:58:57.254Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/1183478/applications/11649569","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"Maes-MacBook-Pro.local","pid":4183,"time":"2015-12-19T03:58:57.255Z","msg":"Connected to collector-189.newrelic.com:443 with agent run ID 50424866263092834.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"Maes-MacBook-Pro.local","pid":4196,"time":"2015-12-19T04:02:49.608Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"Maes-MacBook-Pro.local","pid":4196,"time":"2015-12-19T04:02:53.138Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/1183478/applications/11649569","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"Maes-MacBook-Pro.local","pid":4196,"time":"2015-12-19T04:02:53.139Z","msg":"Connected to collector-189.newrelic.com:443 with agent run ID 50424866263106941.","component":"collector_api"}
+{"v":0,"level":30,"name":"newrelic","hostname":"Maes-MacBook-Pro.local","pid":4207,"time":"2015-12-19T04:05:20.920Z","msg":"Starting New Relic for Node.js connection process."}
+{"v":0,"level":30,"name":"newrelic","hostname":"Maes-MacBook-Pro.local","pid":4207,"time":"2015-12-19T04:05:24.222Z","msg":"Reporting to: https://rpm.newrelic.com/accounts/1183478/applications/11649569","component":"new_relic_response"}
+{"v":0,"level":30,"name":"newrelic","hostname":"Maes-MacBook-Pro.local","pid":4207,"time":"2015-12-19T04:05:24.224Z","msg":"Connected to collector-189.newrelic.com:443 with agent run ID 50424866263114613.","component":"collector_api"}

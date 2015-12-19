@@ -1,51 +1,42 @@
 <div class="pad-left">
-
-<!-- <button ng-click="elevator.getQueens()">Queens</button>
-<button ng-click="elevator.makeAPICall()">Bronx</button>
-<button ng-click="elevator.makeAPICall()">Manhattan</button>
-<button ng-click="elevator.makeAPICall()">Brooklyn</button>
- -->
- <br/>
-<div class="centered">
-	<h3>Search by BOROUGH: enter QNS, BK, BX, MN </h3>
-
-<!-- Tooltip Code	 -->
-	<h3><a id="tooltip-id" href="#" data-toggle="tooltip" title="If typed station name does not show up, there is no elevator or escalator outage! Or you can try typing the name again.">Search by STATION: Type your station below</a></h3>
-
-	<div class="tooltip top" role="tooltip">
-	  <div class="tooltip-arrow"></div>
-	  <div class="tooltip-inner"> 
-	  </div>
-	</div>
-	<!-- End of Tooltip Code	 -->
 <br/>
 
-<input type="text" ng-model="searchel">
+<button ng-click="boroughValue=QNS">Queens</button>
+<button ng-click="boroughValue=BX">Bronx</button>
+<button ng-click="boroughValue=MN">Manhattan</button>
+<button ng-click="boroughValue=BKN">Brooklyn</button>
+
+ <br/>
+<div class="centered">
+
+	<h3>Search by BOROUGH: enter QNS, BK, BX, MN </h3>
+
+<br/>
 
 </div>
  
 <br/>
 
-
-	<ul class="outage-box" ng-repeat="el in elevator.outage | filter:searchel">
+	<ul class="outage-box" ng-repeat="outage in borough.allOutages" ng-show="outage.borough==boroughValue">
 		<div class="station">
-			<li class="station-name">{{el.station}}</li>
-			<li class="trainlisting">serving these trains: {{el.trainno}}</li>
+			<li class="station-name">{{outage.station}}</li>
+			<li class="trainlisting">serving these trains: {{outage.trainno}}</li>
 		</div>
 		<table class="table-condensed">
 			<tr><td>Borough:</td>
-				<td> {{el.borough | boroFilter}}</td> </tr>
+				<td> {{outage.borough | boroFilter}}</td> </tr>
 			<tr><td>Elevator or escalator? </td>
-				<td> {{el.equipment | equipmentFilter}}</td> </tr>
+				<td> {{outage.equipment | equipmentFilter}}</td> </tr>
 			<tr><td>Location of outage: </td>
-				<td> {{el.serving | lowercase}}</td> </tr>
+				<td> {{outage.serving | lowercase}}</td> </tr>
 			<tr><td>Reason: </td>
-				<td> {{el.reason | lowercase}}</td> </tr>
+				<td> {{outage.reason | lowercase}}</td> </tr>
 			<tr><td>Back in Service on: </td>
-				<td> {{el.estimatedreturntoservice}}</td> </tr>
+				<td> {{outage.estimatedreturntoservice}}</td> </tr>
 			<tr><td>Out of Service since: </td>
-				<td> {{el.outagedate}}</td></tr>
+				<td> {{outage.outagedate}}</td></tr>
 		</table>
 	</ul>
+</div>
 
-	</div>
+</div>
