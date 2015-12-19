@@ -129,16 +129,19 @@ a.searchlink {
 /*	font-size: 2vw;*/
 }
 
-/*BOROUGH PAGE*/
+/*****************BOROUGH PAGE**************/
 
 .borough-links {
 	width:100%;
 	text-align: center;
 	font-family: 'Montserrat', sans-serif;
 	font-size: 1.4em;
-	color:;
+	color:darkcyan;
 }
 
+.borough-links a {
+	cursor: pointer;
+}
 #tooltip-id {
 	text-decoration: none;
 	color:black;

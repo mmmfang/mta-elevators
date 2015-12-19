@@ -18,22 +18,12 @@ app.controller('ElevatorController', ['$http', '$scope', function($http, $scope)
    }; 
   this.makeAPICall();
 
-//to get boroughs
-  // this.getBoroughs = function () {
-  //   $.get('/feed', function(xml){ 
-  //     var json = $.xml2json(xml); //json will get all the json
-  //     controller.outage = json.outage; //will get outages as objects in an array
-  //     $scope.outage = json.outage; //same as above
-  //     var boroCtrl;
- 
-  //     for (var i =0; i<controller.outage.length; i++) {
-        
-  //       $scope.boroCtrl = json.outage[i].borough;
-  //       return boroCtrl;
-  //     }; //end for loop
-  //     console.log('boroCtrl',boroCtrl);
-  //   }) 
-  //  }; 
+  //  angular.element(document).ready(function () {
+  //     controller.makeAPICall();
+  //     controller.makeAPICallRedux();
+  //  }); 
+   //works with an alert for ex, but not to make 
+
 
 //TO GET OUTAGES BY TRAIN LINE - USING THE XML DATA
 
