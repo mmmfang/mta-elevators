@@ -1,19 +1,21 @@
-//ANGULAR TIME
+///////////////////////////////////////////////////////////////////////
+///////////////// ANGULAR TIME/////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////
 
 var app = angular.module('elevatorApp', ['ngRoute']);
 
-
+///////////////////////////////////////////////////////////////////////
+///////////////// ELEVATOR CONTROLLER /////////////////////////////////
+///////////////////////////////////////////////////////////////////////
 app.controller('ElevatorController', ['$http', '$scope', function($http, $scope){
  
  var controller=this;
-
-
-///ANGULAR - THIS API CALL USES JSON CONVERTED VIA XML2JSON plugin by Fyneworks///
-
+  
+  ///THIS API CALL USES JSON CONVERTED VIA XML2JSON plugin by Fyneworks///
   this.makeAPICall = function(){
     $.get('/feed', function(xml){ 
         var json = $.xml2json(xml); //json will get all the json
-        controller.outage = json.outage; //will get outages as objects in an array
+        controller.outage = json.outage; //gets outages as objects in an array
     })  
    }; 
   this.makeAPICall();
@@ -24,9 +26,36 @@ app.controller('ElevatorController', ['$http', '$scope', function($http, $scope)
   //  }); 
    //works with an alert for ex, but not to make 
 
+}]); 
 
-//TO GET OUTAGES BY TRAIN LINE - USING THE XML DATA
+///////////////////////////////////////////////////////////////////////
+////////////////// BOROUGH CONTROLLER /////////////////////////////////
+///////////////////////////////////////////////////////////////////////
 
+app.controller("BoroughController", function(){
+  this.boroughValue = '';
+  var controller=this;
+  this.makeAPICall = function(){
+    $.get('/feed', function(xml){ 
+        var json = $.xml2json(xml); //json will get all the json
+        controller.allOutages = json.outage; //gets outages as objects in an array
+    })  
+   }; 
+  this.makeAPICall();
+})
+
+//TOOLTIP FOR THE BOROUGH PAGE
+$('#tooltip-title').tooltip('hover');
+
+
+///////////////////////////////////////////////////////////////////////
+//////////////////// TRAIN CONTROLLER /////////////////////////////////
+///////////////////////////////////////////////////////////////////////
+app.controller("TrainlineController", ['$http', '$scope', function($http, $scope){
+
+  var controller=this;
+
+  //TO GET OUTAGES BY TRAIN LINE - USING THE XML DATA
   this.getTrainLines = function(trainno){
     var inputtedTrain=trainno;
 
@@ -53,7 +82,7 @@ app.controller('ElevatorController', ['$http', '$scope', function($http, $scope)
 
          if (trainLines.includes(inputtedTrain)) {
 
-          $('#info-box').append('<div class="station"><li>' + 
+          $('#box').append('<div id="info-box"><div class="station-tl"><li>' + 
           $(singleOutage).find("station").text() +
           
           '</li><li> serving these trains: ' + 
@@ -66,7 +95,7 @@ app.controller('ElevatorController', ['$http', '$scope', function($http, $scope)
           + whichEquipment +
 
           '</td></tr><tr><td>Location of outage: </td><td>' + 
-          $(singleOutage).find("serving").text().toLowerCase() + 
+          $(singleOutage).find("serving").text() + 
 
           '</td></tr><tr><td>Reason: </td><td>' + 
           $(singleOutage).find("reason").text().toLowerCase() + 
@@ -76,7 +105,7 @@ app.controller('ElevatorController', ['$http', '$scope', function($http, $scope)
           
           '</td></tr><tr><td>Out of Service since: </td><td>' + 
           $(singleOutage).find("outagedate").text() +
-          '</td></tr></table>');
+          '</td></tr></table></div>');
 
         } else {
           //console.log('not displaying since not correct trainline')
@@ -119,24 +148,14 @@ app.controller('ElevatorController', ['$http', '$scope', function($http, $scope)
 
     })//end of data.find
   
-  }// closes getTrainLine()
-
-}]); //closes ElevatorController
-
-app.controller("BoroughController", function(){
-  this.boroughValue = '';
-  var controller=this;
-  this.makeAPICall = function(){
-    $.get('/feed', function(xml){ 
-        var json = $.xml2json(xml); //json will get all the json
-        controller.allOutages = json.outage; //will get outages as objects in an array
-    })  
-   }; 
-  this.makeAPICall();
-})
+  }// closes getTrainLine()  
+}]);//closing Trainline Controller
 
 
-//ANGULAR CUSTOM FILTERS
+///////////////////////////////////////////////////////////////////////
+//////////////////// ANGULAR CUSTOM FILTERS////////////////////////////
+///////////////////////////////////////////////////////////////////////
+
 
 //To display whether elevator or escalator is broken
 app.filter('equipmentFilter', function() {
@@ -170,33 +189,16 @@ app.filter('boroFilter', function() {
      }
 });
 
-app.filter('bxFilter', function(){
-  return function(outage) {
-
-   if (controller.outage[i].borough=='BX') {
-    console.log(controller.outage[i]);
-    return controller.outage[i];
-   } 
- }         
-});
 
 // $(function () {
 //   $('[data-toggle="tooltip"]').tooltip()
 // })
 
-//TOOLTIP FOR THE BOROUGH PAGE
-$('#tooltip-title').tooltip('hover');
 
 
-
-// app.filter('BoroughFilter', function(value){
-//   return element.name.match(/^M/) ? true : false;
-//   }
-// });
-
-
-
-//ANGULAR ROUTES
+///////////////////////////////////////////////////////////////////////
+////////////////// ANGULAR ROUTING // /////////////////////////////////
+///////////////////////////////////////////////////////////////////////
 
 app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   $locationProvider.html5Mode({enabled:true});
@@ -220,8 +222,12 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         controllerAs: 'elevator'        
     }).when('/trainline',
       { templateUrl: 'angular-templates/trainline.html',
-        controller:  'ElevatorController',
-        controllerAs: 'elevator'          
+        controller:  'TrainlineController',
+        controllerAs: 'train'     
+    }).when('/onetrainline',
+      { templateUrl: 'angular-templates/specifictrainline.html',
+        controller:  'TrainlineController',
+        controllerAs: 'train'       
     }).otherwise(
       { redirectTo: '/'
     });

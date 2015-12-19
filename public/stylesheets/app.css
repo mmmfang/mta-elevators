@@ -58,25 +58,29 @@ li {
 }
 
 
-.info-box {
+#info-box {
 	display: inline-block;
-	border: 3px solid #E0E0E0; 
+	border: 1px solid #E0E0E0; 
 	margin:2%;
 	text-align:left;
 	padding:0;
-	background-color: yellow;
+	background-color: white;
+	float:left;
 }
 
+div.station-tl {
+	display: inline-block;
 
+}
 .station-tl{
 	background-color:black;
 	color: white;
 	font-family: 'Lato', sans-serif;
 	border: 1px solid black;
 	text-align: center;
-/*	width:100%;*/
-	padding-left:0;
-	padding-right:0;
+	width:100%;
+/*	padding-left:0;
+	padding-right:0;*/
 	font-size: 1.2em;
 }
 
@@ -160,9 +164,11 @@ a.searchlink {
 }
 
 img {
-	height: 160px;
-	width: 160px;
+	height: 175px;
+	width: 175px;
 }
+
+
 
 
 input[type=submit] {
