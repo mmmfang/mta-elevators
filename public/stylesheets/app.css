@@ -2,8 +2,6 @@ h1, h2 {
 	font-family: 'Montserrat', sans-serif;
 }
 
-
-
 .centered {
 	text-align: center;
 }
@@ -131,15 +129,29 @@ a.searchlink {
 /*	font-size: 2vw;*/
 }
 
+/*BOROUGH PAGE*/
+
+.borough-links {
+	width:100%;
+	text-align: center;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 1.4em;
+	color:;
+}
+
 #tooltip-id {
 	text-decoration: none;
 	color:black;
 	font-size: 1em;
 }
-/*.linksbar {
+
+.linksbar {
 	width:100%;
+
 }
-*/
+
+/*TRAIN LINE PAGE*/
+
 .bg-white {
 	background-color: white;
 }

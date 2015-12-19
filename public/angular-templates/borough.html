@@ -1,11 +1,12 @@
 <div class="pad-left">
 <br/>
 
-<button ng-click="boroughValue='QNS'">Queens</button>
-<button ng-click="boroughValue='BX'">Bronx</button>
-<button ng-click="boroughValue='MN'">Manhattan</button>
-<button ng-click="boroughValue='BKN'">Brooklyn</button>
-
+<div class="borough-links">
+	<a ng-click="boroughValue='QNS'">  QUEENS  </a>  | 
+	<a ng-click="boroughValue='BX'">  BRONX  </a>  | 
+	<a ng-click="boroughValue='MN'">  MANHATTAN  </a> |
+	<a ng-click="boroughValue='BKN'">  BROOKLYN </a>
+</div>
  <br/>
 
 <br/>
@@ -21,7 +22,7 @@
 			<tr><td>Elevator or escalator? </td>
 				<td> {{outage.equipment | equipmentFilter}}</td> </tr>
 			<tr><td>Location of outage: </td>
-				<td> {{outage.serving | lowercase}}</td> </tr>
+				<td> {{outage.serving}}</td> </tr>
 			<tr><td>Reason: </td>
 				<td> {{outage.reason | lowercase}}</td> </tr>
 			<tr><td>Back in Service on: </td>
