@@ -16,19 +16,17 @@
 			<li class="station-name">{{outage.station}}</li>
 		</div>
 		<table class="table-condensed">
-			<tr><td>Train Lines:</td>
-				<td>{{outage.trainno}}</td></tr>
-			<tr><td>Borough:</td>
-				<td> {{outage.borough | boroFilter}}</td> </tr>
-			<tr><td>Elevator or escalator? </td>
-				<td> {{outage.equipment | equipmentFilter}}</td> </tr>
-			<tr><td>Location of outage: </td>
-				<td> {{outage.serving | lowercase}}</td> </tr>
-			<tr><td>Reason: </td>
+			<tr><td>Current Outage:</td>
+				<td><strong>{{outage.equipment | equipmentFilter}} at {{outage.serving | lowercase}}</strong></td></tr>
+			<tr><td><strong>Scheduled Return to Service: </strong></td>
+				<td><strong>{{outage.estimatedreturntoservice}}</strong></td> </tr>
+
+			<tr><td>Station Info:</td>
+				<td>{{outage.borough | boroFilter}}; {{outage.trainno}} train lines</td></tr>
+			<tr><td>Reason for Outage: </td>
 				<td> {{outage.reason | lowercase}}</td> </tr>
-			<tr><td>Back in Service on: </td>
-				<td> {{outage.estimatedreturntoservice}}</td> </tr>
-			<tr><td>Out of Service since: </td>
+
+			<tr><td>Not Working since: </td>
 				<td> {{outage.outagedate}}</td></tr>
 		</table>
 	</ul>
