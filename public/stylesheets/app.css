@@ -39,8 +39,7 @@ li {
 	border: 1px solid black;
 	text-align: center;
 	width:100%;
-	padding-left:0;
-	padding-right:0;
+	padding: 7px 0px;
 	font-size: 1.2em;
 }
 

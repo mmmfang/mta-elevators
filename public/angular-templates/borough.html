@@ -14,15 +14,16 @@
 	<ul class="outage-box" ng-repeat="outage in borough.allOutages" ng-show="outage.borough===boroughValue">
 		<div class="station">
 			<li class="station-name">{{outage.station}}</li>
-			<li class="trainlisting">serving these trains: {{outage.trainno}}</li>
 		</div>
 		<table class="table-condensed">
+			<tr><td>Train Lines:</td>
+				<td>{{outage.trainno}}</td></tr>
 			<tr><td>Borough:</td>
 				<td> {{outage.borough | boroFilter}}</td> </tr>
 			<tr><td>Elevator or escalator? </td>
 				<td> {{outage.equipment | equipmentFilter}}</td> </tr>
 			<tr><td>Location of outage: </td>
-				<td> {{outage.serving}}</td> </tr>
+				<td> {{outage.serving | lowercase}}</td> </tr>
 			<tr><td>Reason: </td>
 				<td> {{outage.reason | lowercase}}</td> </tr>
 			<tr><td>Back in Service on: </td>
