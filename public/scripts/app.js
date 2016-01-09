@@ -85,10 +85,10 @@ app.controller("TrainlineController", ['$http', '$scope', function($http, $scope
           $('#box').append('<div id="info-box"><div class="station-tl"><li>' + 
           $(singleOutage).find("station").text() +
           
-          '</li><li> serving these trains: ' + 
+          '</div><table class="table-condensed"><tr><td>Train Lines: </td><td>'+ 
           $(singleOutage).find("trainno").text() +
-
-          '</li></div><table class="table-condensed"><tr><td>Borough: </td><td>'  
+    
+          '</tr></td><tr><td>Borough: </td><td>'  
           + whichBoro +
 
           '</td></tr><tr><td>Elevator or escalator? </td><td>' 
@@ -128,7 +128,6 @@ app.controller("TrainlineController", ['$http', '$scope', function($http, $scope
         }
       };
 
-
       function filterBoro(word) {
         var charCero = word.charAt(0);
         var charUno = word.charAt(1);
@@ -148,7 +147,7 @@ app.controller("TrainlineController", ['$http', '$scope', function($http, $scope
 
     })//end of data.find
   
-  }// closes getTrainLine()  
+  }; this.getTrainLines()// closes getTrainLines()  
 }]);//closing Trainline Controller
 
 
@@ -188,14 +187,6 @@ app.filter('boroFilter', function() {
         }
      }
 });
-
-
-
-
-// $(function () {
-//   $('[data-toggle="tooltip"]').tooltip()
-// })
-
 
 
 ///////////////////////////////////////////////////////////////////////

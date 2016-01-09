@@ -22,17 +22,16 @@
 	<ul class="outage-box" ng-repeat="el in elevator.outage | filter:searchel">
 		<div class="station">
 			<li class="station-name">{{el.station}}</li>
-			<li class="trainlisting">serving these trains: {{el.trainno}}</li>
 		</div>
 		<table class="table-condensed">
 			<tr><td>Train Lines:</td>
-				<td>{{outage.trainno}}</td></tr>
+				<td>{{el.trainno}}</td></tr>
 			<tr><td>Borough:</td>
 				<td> {{el.borough | boroFilter}}</td> </tr>
 			<tr><td>Elevator or escalator? </td>
 				<td> {{el.equipment | equipmentFilter}}</td> </tr>
 			<tr><td>Location of outage: </td>
-				<td> {{el.serving}}</td> </tr>
+				<td> {{el.serving | lowercase}}</td> </tr>
 			<tr><td>Reason: </td>
 				<td> {{el.reason | lowercase}}</td> </tr>
 			<tr><td>Back in Service on: </td>
