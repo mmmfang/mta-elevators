@@ -67,7 +67,7 @@ li {
 	background-color: white;
 	float:left;
 	width: 350px;
-	height: 500px;
+	max-height: 500px;
 }
 
 div.station-tl {
