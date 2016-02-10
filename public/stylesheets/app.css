@@ -29,6 +29,7 @@ li {
 	text-align:left;
 	padding:0;
 	background-color: white;
+	width: 350px;
 }
 
 .station{
@@ -62,9 +63,11 @@ li {
 	border: 1px solid #E0E0E0; 
 	margin:2%;
 	text-align:left;
-	padding:7px 0px;
+	padding:0px;
 	background-color: white;
 	float:left;
+	width: 350px;
+	height: 500px;
 }
 
 div.station-tl {

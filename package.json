@@ -28,6 +28,7 @@
     "mongoose": "^4.2.7",
     "morgan": "^1.6.1",
     "newrelic": "^1.24.0",
+    "process-nextick-args": "^1.0.6",
     "request": "^2.67.0",
     "xml2json": "^0.9.0"
   }

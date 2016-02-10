@@ -13,11 +13,11 @@ app.controller('ElevatorController', ['$http', '$scope', function($http, $scope)
   
   ///THIS API CALL USES JSON CONVERTED VIA XML2JSON plugin by Fyneworks///
   this.makeAPICall = function(){
-    $.get('/feed', function(xml){ 
+    $.get('/feed', function(xml){
         var json = $.xml2json(xml); //json will get all the json
         controller.outage = json.outage; //gets outages as objects in an array
-    })  
-   }; 
+    });
+   };
   this.makeAPICall();
 
   //  angular.element(document).ready(function () {
@@ -26,7 +26,7 @@ app.controller('ElevatorController', ['$http', '$scope', function($http, $scope)
   //  }); 
    //works with an alert for ex, but not to make 
 
-}]); 
+}]);
 
 ///////////////////////////////////////////////////////////////////////
 ////////////////// BOROUGH CONTROLLER /////////////////////////////////
@@ -72,38 +72,34 @@ app.controller("TrainlineController", ['$http', '$scope', function($http, $scope
           for (var i=0; i<trainArray.length; i++) {
             //console.log('tl split for this el', i ,trainArray[i]);
             console.log('fulltrainarray', trainLines);
-          } 
+          }
 
-          var checkEquip = $(singleOutage).find("equipment").text()
+          var checkEquip = $(singleOutage).find("equipment").text();
           var whichEquipment = elOrEsc(checkEquip);
 
-          var findBoro = $(singleOutage).find("borough").text()
+          var findBoro = $(singleOutage).find("borough").text();
           var whichBoro =  filterBoro(findBoro);
 
          if (trainLines.includes(inputtedTrain)) {
 
-          $('#box').append('<div id="info-box"><div class="station-tl"><li>' + 
+          $('#box').append('<div id="info-box"><div class="station"><li>' + 
           $(singleOutage).find("station").text() +
           
-          '</div><table class="table-condensed"><tr><td>Train Lines: </td><td>'+ 
-          $(singleOutage).find("trainno").text() +
-    
-          '</tr></td><tr><td>Borough: </td><td>'  
-          + whichBoro +
+          '</div><table class="table-condensed"><tr><td>Current Outage: </td><td><strong>' 
+          + whichEquipment + ' at ' + 
+          $(singleOutage).find("serving").text().toLowerCase() + 
 
-          '</td></tr><tr><td>Elevator or escalator? </td><td>' 
-          + whichEquipment +
-
-          '</td></tr><tr><td>Location of outage: </td><td>' + 
-          $(singleOutage).find("serving").text() + 
-
-          '</td></tr><tr><td>Reason: </td><td>' + 
-          $(singleOutage).find("reason").text().toLowerCase() + 
-
-          '</td></tr><tr><td>Back in Service on: </td><td>' + 
+          '</td></tr><tr><td>Scheduled Return to Service: </td><td>' + 
           $(singleOutage).find("estimatedreturntoservice").text() + 
+
+          '</strong></td></tr><tr><td>Station Info: </td><td>'
+          + whichBoro + '; ' + 
+          $(singleOutage).find("trainno").text() +
+
+          '</td></tr><tr><td>Reason for Outage: </td><td>' + 
+          $(singleOutage).find("reason").text().toLowerCase() + 
           
-          '</td></tr><tr><td>Out of Service since: </td><td>' + 
+          '</td></tr><tr><td>Outage began: </td><td>' + 
           $(singleOutage).find("outagedate").text() +
           '</td></tr></table></div>');
 
