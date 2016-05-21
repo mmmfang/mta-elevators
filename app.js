@@ -14,5 +14,4 @@ $(function(){  //document ready
 });
 
 
-
 // "http://cors.io/?u=http://web.mta.info/developers/data/nyct/nyct_ene.xml"
