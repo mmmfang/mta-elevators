@@ -1,24 +1,19 @@
 <div class="pad-left"  ng-init="elevator.makeAPICall()">
-
-<div class="centered">
-
+  
+  <div class="centered">
 <!-- Tooltip Code	 -->
 	<h3><a id="tooltip-id" href="#" data-toggle="tooltip" title="If typed station name does not show up, there is no elevator or escalator outage! Or you can try typing the name again.">Search by STATION: Type your station below</a></h3>
 
 	<div class="tooltip top" role="tooltip">
 	  <div class="tooltip-arrow"></div>
-	  <div class="tooltip-inner"> 
-	  </div>
+	  <div class="tooltip-inner"></div>
 	</div>
 	<!-- End of Tooltip Code	 -->
-<br/>
-
-<input type="text" ng-model="searchel">
-
-</div>
- 
-<br/>
-
+  <br/>
+  <input type="text" ng-model="searchel">
+  </div>
+  
+  <br/>
 	<ul class="outage-box" ng-repeat="outage in elevator.outage | filter:searchel">
 		<div class="station">
 			<li class="station-name">{{outage.station}}</li>
@@ -40,4 +35,3 @@
 	</ul>
 </div>
 
-</div>

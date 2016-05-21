@@ -24,7 +24,7 @@ app.controller('ElevatorController', ['$http', '$scope', function($http, $scope)
   //     controller.makeAPICall();
   //     controller.makeAPICallRedux();
   //  }); 
-   //works with an alert for ex, but not to make 
+   //works with an alert for example, but not to make 
 
 }]);
 
@@ -56,7 +56,7 @@ app.controller("TrainlineController", ['$http', '$scope', function($http, $scope
   var controller=this;
 
   //TO GET OUTAGES BY TRAIN LINE - USING THE XML DATA
-  this.getTrainLines = function(trainno){
+  this.getTrainLines = function(trainno, callback){
     var inputtedTrain=trainno;
 
     var promise = $http.get('/feed');
@@ -142,8 +142,7 @@ app.controller("TrainlineController", ['$http', '$scope', function($http, $scope
      };
 
     })//end of data.find
-  
-  }; this.getTrainLines()// closes getTrainLines()  
+  }; this.getTrainLines();// closes getTrainLines()  
 }]);//closing Trainline Controller
 
 

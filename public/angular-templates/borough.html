@@ -1,15 +1,14 @@
 <div class="pad-left">
-<br/>
+  <br/>
 
-<div class="borough-links">
+  <div class="borough-links">
 	<a ng-click="boroughValue='QNS'">  QUEENS  </a>  | 
 	<a ng-click="boroughValue='BX'">  BRONX  </a>  | 
 	<a ng-click="boroughValue='MN'">  MANHATTAN  </a> |
 	<a ng-click="boroughValue='BKN'">  BROOKLYN </a>
-</div>
- <br/>
-
-<br/>
+  </div>
+  <br/>
+  <br/>
 
 	<ul class="outage-box" ng-repeat="outage in borough.allOutages" ng-show="outage.borough===boroughValue">
 		<div class="station">
