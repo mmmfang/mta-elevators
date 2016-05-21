@@ -1,6 +1,5 @@
 <div class="pad-left">
   <br/>
-
   <div class="borough-links">
 	<a ng-click="boroughValue='QNS'">  QUEENS  </a>  | 
 	<a ng-click="boroughValue='BX'">  BRONX  </a>  | 
@@ -9,26 +8,23 @@
   </div>
   <br/>
   <br/>
-
-	<ul class="outage-box" ng-repeat="outage in borough.allOutages" ng-show="outage.borough===boroughValue">
-		<div class="station">
-			<li class="station-name">{{outage.station}}</li>
-		</div>
-		<table class="table-condensed">
-			<tr><td>Current Outage:</td>
-				<td><strong>{{outage.equipment | equipmentFilter}} at {{outage.serving | lowercase}}</strong></td></tr>
-			<tr><td><strong>Scheduled Return to Service: </strong></td>
-				<td><strong>{{outage.estimatedreturntoservice}}</strong></td> </tr>
-
-			<tr><td>Station Info:</td>
-				<td>{{outage.borough | boroFilter}}; {{outage.trainno}} train lines</td></tr>
-			<tr><td>Reason for Outage: </td>
-				<td> {{outage.reason | lowercase}}</td> </tr>
-
-			<tr><td>Outage began: </td>
-				<td> {{outage.outagedate}}</td></tr>
-		</table>
-	</ul>
+  
+  <ul class="outage-box" ng-repeat="outage in borough.allOutages" ng-show="outage.borough===boroughValue">
+	<div class="station">
+		<li class="station-name">{{outage.station}}</li>
+	</div>
+	<table class="table-condensed">
+		<tr><td>Current Outage:</td>
+			<td><strong>{{outage.equipment | equipmentFilter}} at {{outage.serving | lowercase}}</strong></td></tr>
+		<tr><td><strong>Scheduled Return to Service: </strong></td>
+			<td><strong>{{outage.estimatedreturntoservice}}</strong></td> </tr>
+		<tr><td>Station Info:</td>
+			<td>{{outage.borough | boroFilter}}; {{outage.trainno}} train lines</td></tr>
+		<tr><td>Reason for Outage: </td>
+			<td> {{outage.reason | lowercase}}</td> </tr>
+		<tr><td>Outage began: </td>
+			<td> {{outage.outagedate}}</td></tr>
+	</table>
+  </ul>
 </div>
 
-</div>
