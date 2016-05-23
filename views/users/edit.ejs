@@ -1,14 +1,12 @@
 <div class="centered">
-    <h2>User Profile Page</h2>
-
-    <h4>You are logged in as  <%= user.email%> </h4>
+  <h2>User Profile Page</h2>
+    <h4>You are logged in as <%= user.email%></h4>
     <hr/>
     <div>
         <h4>SET USER PREFERENCES</h4>
         <br/>
         <h4>Do you wish to recieve notifications about elevator/escalator outages?</h4>
         <form action="/users/<%= user._id%>/?_method=PATCH" method="post">
-
             <label for="yes">Yes</label>
             <input id='yes' type="radio" value='true' name='user[notifications]'>
             <label for="no">No</label>
@@ -40,12 +38,9 @@
                 <option value="S">S</option>
                 <option value="Z">Z</option>
               </select>
-
               <br/>
               <br/>
-
             <input type="submit">
-
         </form>
     </div>
 </div>
